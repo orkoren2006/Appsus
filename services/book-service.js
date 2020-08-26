@@ -1,5 +1,5 @@
 // import { utilService } from './utils.js'
-import { bookStorage } from './storage-service.js'
+import { storageService } from './storage-service.js'
 
 const BOOKS_KEY = 'myBooks';
 // const GOOGLE_BOOKS_URL = 'https://www.googleapis.com/books/v1/volumes?q='; //flowers+inauthor:keyes&key=yourAPIKey
@@ -465,10 +465,10 @@ var books;
 window.theBooks = gBooks;
 
 function query() {
-  books = bookStorage.loadBooksFromStorage(BOOKS_KEY);
+  books = storageService.loadFromStorage(BOOKS_KEY);
   if (!books || !books.length) {
     books = gBooks;
-    bookStorage.saveBooksToStorage(BOOKS_KEY, books)
+    storageService.saveToStorage(BOOKS_KEY, books)
   }
   return Promise.resolve(books)
 }
@@ -481,7 +481,7 @@ function getBookById(id) {
 // function addReview(book, reviewToAdd) {
 //   if (!book.review) book['review'] = [reviewToAdd];
 //   else book['review'].push(reviewToAdd);
-//   bookStorage.saveBooksToStorage(BOOKS_KEY, books)
+//   storageService.saveBooksToStorage(BOOKS_KEY, books)
 // }
 
 
@@ -526,7 +526,7 @@ function getBookById(id) {
 //   }
 
 //   books.push(bookToAdd)
-//   bookStorage.saveBooksToStorage(BOOKS_KEY, books)
+//   storageService.saveBooksToStorage(BOOKS_KEY, books)
 // }
 
 // function _getDate() {

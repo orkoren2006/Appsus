@@ -1,3 +1,7 @@
+@import "./book-app/main-book.css";
+@import "./email-app/main-email.css";
+@import "./keep-app/main-keep.css";
+
 body {
     background-color: lightblue;
 }

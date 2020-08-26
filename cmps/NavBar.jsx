@@ -7,7 +7,7 @@ export function NavBar(props) {
             <NavLink to="/">Home</NavLink>|
             <NavLink to="/email">Email</NavLink>|
             <NavLink to="/book">Books</NavLink>|
-            <NavLink to="/keep">Todos</NavLink>|
+            <NavLink to="/keep">Notes</NavLink>|
         </nav>
     )
 }
