@@ -1,10 +1,13 @@
 import {NoteTxt} from './NoteTxt.jsx'
+import {NoteImg} from './NoteImg.jsx'
 
 export function NoteList(props) {
     function DynamicCmp(props){
         switch (props.type){
             case 'NoteText':
                 return <NoteTxt {...props}/>
+            case 'NoteImg':
+                return <NoteImg {...props}/>
         }
     }
     return (<ul className="note-list clean-list">

@@ -1,4 +1,5 @@
 import { storageService } from './storage-service.js'
+import { utilService } from './utils.js'
 
 const NOTES_KEY = 'myNotes';
 
@@ -54,6 +55,7 @@ function removeNote(noteToRemove) {
 
 function addNote(note) {
     let newNote;
+    const noteId = utilService.makeId();
     switch (note.type) {
         case 'NoteTxt':
             newNote = {
@@ -69,7 +71,7 @@ function addNote(note) {
                 type: note.type,
                 info: {
                     url: note.inputContent,
-                    title: 'New Img Note'
+                    title: note.moreContent
                 },
                 style: {
                     backgroundColor: '#00d'
@@ -103,20 +105,15 @@ function addNote(note) {
         default: break;
     }
 
-    let noteIdPrm = axios.get('http://www.filltext.com/?rows=1&pwd={password}')
-
-    return noteIdPrm.then(res => {
-        // console.log(res[0])
-        newNote['id'] = res.data[0].pwd
-        notes.push(newNote)
-        storageService.saveToStorage(NOTES_KEY, notes)
-        return notes
-    })
+    newNote['id'] = noteId;
+    notes.push(newNote)
+    storageService.saveToStorage(NOTES_KEY, notes)
 }
 
 function getEmptyNote() {
     return {
         type: 'NoteTxt',
         inputContent: '',
+        moreContent: ''
     }
 }
