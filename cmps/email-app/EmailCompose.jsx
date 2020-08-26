@@ -8,7 +8,7 @@ export function EmailCompose(props) {
             <input type="text" placeholder="Enter Message" onChange={(ev) => {
                 props.showBody(ev.target.value)
             }} />
-            <button className="add-note" onClick={props.addEmail}>Add</button>
+            <button className="add-note" onClick={props.sendEmail}>Add</button>
         </section>
     )
 } 
