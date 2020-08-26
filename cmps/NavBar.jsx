@@ -1,0 +1,13 @@
+const { NavLink } = ReactRouterDOM
+
+export function NavBar(props) {
+    
+    return (
+        <nav>
+            <NavLink to="/">Home</NavLink>|
+            <NavLink to="/email">Email</NavLink>|
+            <NavLink to="/book">Books</NavLink>|
+            <NavLink to="/keep">Todos</NavLink>|
+        </nav>
+    )
+}
