@@ -56,7 +56,7 @@ export class MisterEmailApp extends React.Component {
                 
                 <EmailFilter onReadFilter={this.toggleReadClicked} />
                 <EmailList emails={emails} />
-                <EmailCompose />
+                <EmailCompose addEmail={}/>
 
                 <Modal>
 
