@@ -4,6 +4,7 @@ const NOTES_KEY = 'myNotes';
 
 export const keepService = {
     query,
+    removeNote
 }
 
 var notes;
@@ -38,8 +39,13 @@ var gNotes = [
 function query() {
     notes = storageService.loadFromStorage(NOTES_KEY);
     if (!notes || !notes.length) {
-      notes = gNotes;
-      storageService.saveToStorage(NOTES_KEY, notes)
+        notes = gNotes;
+        storageService.saveToStorage(NOTES_KEY, notes)
     }
     return Promise.resolve(notes)
-  }
+}
+
+function removeNote(noteToRemove){
+    notes = notes.filter(note => note !== noteToRemove);
+    storageService.saveToStorage(NOTES_KEY, notes)
+}

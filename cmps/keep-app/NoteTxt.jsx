@@ -1,19 +1,17 @@
 
 export class NoteTxt extends React.Component {
 
-    componentDidMount(){
-        console.log(this.props)
-    }
-
     state = {
-        style: null,
+        style: {
+            backgroundColor: 'red',
+        },
     }
 
     render() {
         return (
-            <section className="text-note">
+            <section className="text-note" style={this.state.style}>
                 <h5>{this.props.note.info.txt}</h5>
-                <button className="remove-btn">X</button>
+                <button className="remove-btn" onClick={()=>{this.props.onRemoveNoteBtn(this.props.note)}}>X</button>
             </section>
         )
 

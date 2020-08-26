@@ -12,7 +12,7 @@ export function NoteList(props) {
             const noteType = note.type;
             return <li key={note.id}>
                 {/* ADD DYNAMIC CPM FOR SHOW DIFFERENT TYPES OF NOTES */}
-                <DynamicCmp note={note} type={noteType}/>
+                <DynamicCmp note={note} type={noteType} onRemoveNoteBtn={props.onRemoveNoteBtn}/>
             </li>
         })}
     </ul>)
