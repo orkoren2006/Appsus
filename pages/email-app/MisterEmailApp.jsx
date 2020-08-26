@@ -11,6 +11,8 @@ export class MisterEmailApp extends React.Component {
     state = {
         emails: [],
         readClicked: false,
+        newSubject: '',
+        newBody: ''
     }
 
     componentDidMount() {
@@ -43,6 +45,22 @@ export class MisterEmailApp extends React.Component {
 
     }
 
+    showSubject = (newSubject) => {
+        console.log('Subject', newSubject);
+        this.setState({ newSubject })
+    }
+
+    showBody = (newBody) => {
+        console.log('Body', newBody);
+        this.setState({ newBody })
+    }
+
+    addEmail = () => {
+        console.log('button');
+        emailService.addEmail(this.state.newSubject, this.state.newBody)
+        this.loadEmails();
+        // this.setState({ newBody: '' })
+    }
 
     render() {
         console.log(this.state.readClicked);
@@ -56,11 +74,9 @@ export class MisterEmailApp extends React.Component {
                 
                 <EmailFilter onReadFilter={this.toggleReadClicked} />
                 <EmailList emails={emails} />
-                <EmailCompose addEmail={}/>
+                <EmailCompose showSubject={this.showSubject} showBody={this.showBody} addEmail={this.addEmail}/>
 
-                <Modal>
-
-                </Modal>
+                {/* <Modal></Modal> */}
             </section>
         )
     }

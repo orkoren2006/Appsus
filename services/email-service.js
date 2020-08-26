@@ -1,6 +1,9 @@
+import { storageService } from './storage-service.js'
+import { utilService } from './utils.js'
 
 export const emailService = {
     query,
+    addEmail
 }
 
 const emails = [
@@ -14,4 +17,11 @@ const emails = [
 
 function query () {
     return Promise.resolve(emails)
+}
+
+
+function addEmail(subject, body) {
+    let id = utilService.makeId()
+    let email = {id: id, subject: subject, body: body, sender: 'Me', isRead: false, isStarred: false, sentAt : new Date()}
+    emails.push(email)
 }
