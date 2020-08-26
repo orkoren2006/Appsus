@@ -1,0 +1,8 @@
+.inbox li {
+    background-color: lightgray;
+
+}
+
+.inbox {
+    list-style-type: none;
+}
