@@ -2,7 +2,7 @@
 // TODO - BIG LOGO IN THE MIDDLE + 
 // TODO - list of apps icons + links to apps
 
-export default class Home extends React.Component {
+export class Home extends React.Component {
 
     render() {
         return (

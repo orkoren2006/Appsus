@@ -1,8 +1,32 @@
+import {bookService} from '../../services/book-service.js'
+import {BookList} from '../../cmps/book-app/BookList.jsx'
+
 export class MissBookApp extends React.Component{
 
-    render () {
+    state = {
+        books: [],
+    }
+
+    componentDidMount(){
+        bookService.query()
+            .then(books => this.setState({books}))
+    }
+
+    getBooksForDisplay() {
+        return this.state.books;
+    }
+
+    render() {
+        const booksToShow = this.getBooksForDisplay();
+        if (!booksToShow) return <p>loading..</p>
         return (
-            <h1>I'm your BOOK app</h1>
+            <section className="book-app">
+                <h2>books</h2>
+                <hr />
+                {/* {< BookFilter onFilter={this.setFilter} />} */}
+                {<BookList books={booksToShow}/>}
+                <hr />
+            </section>
         )
     }
 }

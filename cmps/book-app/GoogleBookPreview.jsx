@@ -1,5 +1,3 @@
-import eventBus from '../../services/event-bus-service.js'
-
 export function GoogleBookPreview({ book,onAddBook }) {
 
     return (
