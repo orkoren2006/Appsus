@@ -73,17 +73,21 @@ export class MisterEmailApp extends React.Component {
     toggleReadFilter = () => {
         this.setState({ readFilter: !this.state.readFilter })
         if (this.state.sentFilter) this.setState({ sentFilter: !this.state.sentFilter })
+        if (this.state.starredFilter) this.setState({ starredFilter: !this.state.starredFilter })
 
     }
 
     toggleSentFilter = () => {
         this.setState({ sentFilter: !this.state.sentFilter })
         if (this.state.readFilter) this.setState({ readFilter: !this.state.readFilter })
+        if (this.state.starredFilter) this.setState({ starredFilter: !this.state.starredFilter })
 
     }
 
     toggleStarredFilter = () => {
         this.setState({ starredFilter: !this.state.starredFilter })
+        if (this.state.readFilter) this.setState({ readFilter: !this.state.readFilter })
+        if (this.state.sentFilter) this.setState({ sentFilter: !this.state.sentFilter })
 
     }
 
