@@ -93,6 +93,7 @@ export class MisterEmailApp extends React.Component {
 
     sendEmail = () => {
         emailService.addEmail(this.state.newSubject, this.state.newBody)
+        this.state.isComposed = false;
         this.loadEmails();
         // this.setState({ newBody: '' })
     }
@@ -121,6 +122,12 @@ export class MisterEmailApp extends React.Component {
         this.loadEmails();
     }
 
+    
+    closeCompose = () => {
+        this.state.isComposed = false;
+        this.loadEmails();
+    }
+
 
     render() {
         const emails = this.getFilteredEmails()
@@ -139,7 +146,8 @@ export class MisterEmailApp extends React.Component {
                     </div>
                     <EmailList emails={emails} onRemoveEmail={this.removeEmail} onStarredEmail={this.starEmail} onReadEmail={this.readEmail} />
                 </div>
-                <EmailCompose className={composeClass} showSubject={this.showSubject} showBody={this.showBody} sendEmail={this.sendEmail} />
+                <EmailCompose className={composeClass} showSubject={this.showSubject} showBody={this.showBody} sendEmail={this.sendEmail} 
+                closeModal={this.closeCompose}/>
 
                 {/* <Modal></Modal> */}
             </section>
