@@ -39,6 +39,7 @@ export class MissKeepApp extends React.Component {
     }
 
     onNewNoteTxt = (ev) => {
+        console.log(ev.target);
         if (ev.target.name === 'second-input') {
             this.setState({ newNote: { ...this.state.newNote, moreContent: ev.target.value } })
         } else {
@@ -93,18 +94,18 @@ export class MissKeepApp extends React.Component {
         this.loadNote()
     }
 
-    listItemClicked = (ev,note) => { 
+    listItemClicked = (ev, note) => {
         if (ev.target.type === 'color' || ev.target.name === 'btn') return
-        this.setState({noteToEdit: [note]})
+        this.setState({ noteToEdit: [note] })
     }
 
-    noteColorChanged = (ev,note) => {  
-        keepService.setNoteColor(note,ev.target.value)
+    noteColorChanged = (ev, note) => {
+        keepService.setNoteColor(note, ev.target.value)
         this.loadNote()
     }
 
     closeModal = () => {
-        this.setState({noteToEdit: null})
+        this.setState({ noteToEdit: null })
     }
 
 
@@ -142,14 +143,16 @@ export class MissKeepApp extends React.Component {
                         onInputChange={this.onNewNoteTxt} />}
                 </section>
                 <NoteList notes={notesToShow}
+                    onChangeItem={this.onNewNoteTxt}
                     onRemoveNoteBtn={this.removeNote}
                     onItemClick={this.listItemClicked}
                     onChangeColor={this.noteColorChanged}
                     onTodoClick={this.todoClicked}
                 />
-                {/* {this.state.noteToEdit && <Modal onCloseModal={this.closeModal}> 
+                {/* {this.state.noteToEdit && <Modal onCloseModal={this.closeModal}>
                     <NoteEdit notes={this.state.noteToEdit} />
-                    <NoteList notes={this.state.noteToEdit} />
+                    <NoteList notes={this.state.noteToEdit}
+                        onChanedItem={this.onNewNoteTxt} />
                 </Modal>} */}
             </section>
         )
