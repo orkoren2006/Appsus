@@ -58,7 +58,7 @@ function starredEmail(id) {
 
 function readEmail(id) {
     var currEmail = emails.filter(email => email.id === id);
-    // currEmail[0].isRead = !currEmail[0].isRead;
-    currEmail[0].isRead = true;
+    currEmail[0].isRead = !currEmail[0].isRead;
+    // currEmail[0].isRead = true;
     storageService.saveToStorage(KEY, emails)
 }

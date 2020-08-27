@@ -47,6 +47,9 @@ li img, h2, h3 {
     list-style-type: none;
 }
 
+.read {
+    font-style: italic;
+}
 
 
 /* Modal - make in seperate file later */
@@ -77,3 +80,15 @@ li img, h2, h3 {
     position: relative;
 }
 
+.hidden {
+    display: none;
+}
+
+.show {
+    background-color: palegreen;
+    width: 600px;
+    height: 600px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}

@@ -14,7 +14,8 @@ export class MisterEmailApp extends React.Component {
         starredFilter: false,
         sentFilter: false,
         newSubject: '',
-        newBody: ''
+        newBody: '',
+        isComposed: false
     }
 
     componentDidMount() {
@@ -44,21 +45,6 @@ export class MisterEmailApp extends React.Component {
         else return this.state.emails
     }
 
-    // getFilteredEmails() {
-    //     let emails = [];
-    //     if (this.state.readFilter && !this.state.sentFilter && !this.state.starredFilter) {
-    //         emails = this.state.emails.filter(email => email.isRead)
-    //      } else if (this.state.readFilter && !this.state.sentFilter && this.state.starredFilter) {
-    //          emails = this.state.emails.filter(email => email.isRead && email.isStarred)
-    //      } else if (!this.state.readFilter && this.state.sentFilter && this.state.starredFilter) {
-    //         emails = this.state.emails.filter(email => email.isSent && email.isStarred)
-    //      } else if (!this.state.readFilter && !this.state.sentFilter && this.state.starredFilter) {
-    //         emails = this.state.emails.filter(email => email.isStarred)
-    //      } else if (!this.state.readFilter && this.state.sentFilter && !this.state.starredFilter) {
-    //         emails = this.state.emails.filter(email => email.isSent)
-    //      } else emails = this.state.emails
-    //     return emails;
-    // }
 
     getFilteredEmails() {
         let emails = [];
@@ -128,11 +114,18 @@ export class MisterEmailApp extends React.Component {
 
     }
 
+    openCompose = () => {
+        console.log(this.state.isComposed);
+        this.state.isComposed = true;
+        console.log(this.state.isComposed);
+        this.loadEmails();
+    }
+
 
     render() {
         const emails = this.getFilteredEmails()
+        let composeClass = this.state.isComposed ?'show':'hidden'        
         return (
-
             <section className="email-main">
                 <div className="header">
                     <h1>I'm your EMAIL app</h1>
@@ -140,13 +133,13 @@ export class MisterEmailApp extends React.Component {
 
                 <div className="screen">
                     <div className="sidebar">
-                        <button className="compose">+ Compose</button>
+                        <button className="compose" onClick={this.openCompose}>+ Compose</button>
                         <EmailFilter onReadFilter={this.toggleReadFilter} onSentFilter={this.toggleSentFilter} onStarredFilter={this.toggleStarredFilter}
                             onInbox={this.filterInbox} />
                     </div>
                     <EmailList emails={emails} onRemoveEmail={this.removeEmail} onStarredEmail={this.starEmail} onReadEmail={this.readEmail} />
                 </div>
-                <EmailCompose showSubject={this.showSubject} showBody={this.showBody} sendEmail={this.sendEmail} />
+                <EmailCompose className={composeClass} showSubject={this.showSubject} showBody={this.showBody} sendEmail={this.sendEmail} />
 
                 {/* <Modal></Modal> */}
             </section>
