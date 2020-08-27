@@ -6,7 +6,9 @@ const KEY = 'myEmails';
 export const emailService = {
     query,
     addEmail,
-    removeEmail
+    removeEmail,
+    starredEmail,
+    readEmail
 }
 
 var emails;
@@ -43,6 +45,20 @@ function addEmail(subject, body) {
 }
 
 
-function removeEmail(email) {
-    
+function removeEmail(id) {
+    emails = emails.filter(email => email.id !== id);
+    storageService.saveToStorage(KEY, emails)
+}
+
+function starredEmail(id) {
+    var currEmail = emails.filter(email => email.id === id);
+    currEmail[0].isStarred = !currEmail[0].isStarred;
+    storageService.saveToStorage(KEY, emails)
+}
+
+function readEmail(id) {
+    var currEmail = emails.filter(email => email.id === id);
+    // currEmail[0].isRead = !currEmail[0].isRead;
+    currEmail[0].isRead = true;
+    storageService.saveToStorage(KEY, emails)
 }

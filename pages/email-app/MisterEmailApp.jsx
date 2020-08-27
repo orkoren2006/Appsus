@@ -92,26 +92,39 @@ export class MisterEmailApp extends React.Component {
     }
 
     showSubject = (newSubject) => {
-        console.log('Subject', newSubject);
         this.setState({ newSubject })
     }
 
     showBody = (newBody) => {
-        console.log('Body', newBody);
         this.setState({ newBody })
     }
 
     sendEmail = () => {
-        console.log('button');
         emailService.addEmail(this.state.newSubject, this.state.newBody)
         this.loadEmails();
         // this.setState({ newBody: '' })
     }
 
+    removeEmail = (id) => {
+        emailService.removeEmail(id)
+        this.loadEmails();
+    }
+
+    starEmail = (id) => {
+        emailService.starredEmail(id)
+        this.loadEmails();
+    }
+
+    readEmail = (id, ev) => {
+        if (ev.target.name === 'delete' || ev.target.name === 'starred') return
+        emailService.readEmail(id)
+        this.loadEmails();
+      
+    }
+    
+
     render() {
-        console.log(this.state.sentFilter);
         const emails = this.getFilteredEmails()
-        console.log(emails);
         return (
 
             <section>
@@ -119,7 +132,7 @@ export class MisterEmailApp extends React.Component {
                 <button>Compose new Email</button>
 
                 <EmailFilter onReadFilter={this.toggleReadFilter} onSentFilter={this.toggleSentFilter} onStarredFilter={this.toggleStarredFilter} />
-                <EmailList emails={emails} />
+                <EmailList emails={emails} onRemoveEmail={this.removeEmail} onStarredEmail={this.starEmail} onReadEmail={this.readEmail}/>
                 <EmailCompose showSubject={this.showSubject} showBody={this.showBody} sendEmail={this.sendEmail} />
 
                 {/* <Modal></Modal> */}
