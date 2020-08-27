@@ -11,11 +11,19 @@
 
 .screen {
     display: flex;
+    color: #202124;
+  
+}
+
+.email-list {
+    flex-grow: 5;
 }
 
 .sidebar {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+    max-width: 80px;
 }
 
 .filter-buttons {
@@ -29,26 +37,63 @@
     margin-bottom: 5px;
 }
 
-li img, h2, h3 {
+li img, p {
     margin-right: 5px;
 }
 
 
 .inbox li {
     display: flex;
-    background-color: lightgray;
-    margin-bottom: 10px;
-    width: 1000px;
+    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: baseline;
+    border-bottom: solid 1px gray;
 
+}
+
+.inbox .sender {
+    width: 150px;
+}
+
+.inbox .subject {
+    width: 300px;
+}
+
+.inbox .email-body {
+    flex-grow: 6;
+    color: #5f6368;
+}
+
+/* .inbox .date {
+    flex-grow: 3;
+} */
+
+.inbox img {
+    padding-right: 5px;
+}
+
+.inbox img:first-child {
+    padding-left: 5px;
+}
+
+.inbox .unread {
+    background-color: #d6e0f0;
+}
+
+.inbox .unread .subject, .unread .date, .unread .sender{
+    font-weight: bold;
+}
+
+.inbox .read {
+    background-color: #f1f3f8;
 }
 
 .inbox {
     list-style-type: none;
 }
 
-.read {
-    font-style: italic;
+.sender {
+    font-size: 1rem;
 }
 
 
