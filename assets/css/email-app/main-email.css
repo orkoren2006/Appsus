@@ -1,11 +1,52 @@
+/* Email comp */
+.email-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.email-main .compose {
+    margin-bottom: 10px;
+    border-radius: 25px;
+}
+
+.screen {
+    display: flex;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.filter-buttons button {
+    margin-bottom: 5px;
+}
+
+li img, h2, h3 {
+    margin-right: 5px;
+}
+
+
 .inbox li {
+    display: flex;
     background-color: lightgray;
+    margin-bottom: 10px;
+    width: 1000px;
+    align-items: baseline;
 
 }
 
 .inbox {
     list-style-type: none;
 }
+
 
 
 /* Modal - make in seperate file later */
@@ -35,3 +76,4 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     position: relative;
 }
+

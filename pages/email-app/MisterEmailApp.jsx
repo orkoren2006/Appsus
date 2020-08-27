@@ -69,6 +69,12 @@ export class MisterEmailApp extends React.Component {
         return emails;
     }
 
+    filterInbox = () => {
+        if (this.state.readFilter) this.setState({ readFilter: !this.state.readFilter })
+        if (this.state.starredFilter) this.setState({ starredFilter: !this.state.starredFilter })
+        if (this.state.sentFilter) this.setState({ sentFilter: !this.state.sentFilter })
+        this.loadEmails();
+    }
 
     toggleReadFilter = () => {
         this.setState({ readFilter: !this.state.readFilter })
@@ -119,20 +125,27 @@ export class MisterEmailApp extends React.Component {
         if (ev.target.name === 'delete' || ev.target.name === 'starred') return
         emailService.readEmail(id)
         this.loadEmails();
-      
+
     }
-    
+
 
     render() {
         const emails = this.getFilteredEmails()
         return (
 
-            <section>
-                <h1>I'm your EMAIL app</h1>
-                <button>Compose new Email</button>
+            <section className="email-main">
+                <div className="header">
+                    <h1>I'm your EMAIL app</h1>
+                </div>
 
-                <EmailFilter onReadFilter={this.toggleReadFilter} onSentFilter={this.toggleSentFilter} onStarredFilter={this.toggleStarredFilter} />
-                <EmailList emails={emails} onRemoveEmail={this.removeEmail} onStarredEmail={this.starEmail} onReadEmail={this.readEmail}/>
+                <div className="screen">
+                    <div className="sidebar">
+                        <button className="compose">+ Compose</button>
+                        <EmailFilter onReadFilter={this.toggleReadFilter} onSentFilter={this.toggleSentFilter} onStarredFilter={this.toggleStarredFilter}
+                            onInbox={this.filterInbox} />
+                    </div>
+                    <EmailList emails={emails} onRemoveEmail={this.removeEmail} onStarredEmail={this.starEmail} onReadEmail={this.readEmail} />
+                </div>
                 <EmailCompose showSubject={this.showSubject} showBody={this.showBody} sendEmail={this.sendEmail} />
 
                 {/* <Modal></Modal> */}
