@@ -6,7 +6,7 @@ export function ExpandNoteInput(props){
     }
 
     return (
-        <input name='second-input' type="text" placeholder={getPlaceholerTxt(props.noteType)} onChange={(ev)=>props.onInputChange(ev)}/>
+        <input className="more-content-input flex" name='second-input' type="text" placeholder={getPlaceholerTxt(props.noteType)} onChange={(ev)=>props.onInputChange(ev)}/>
     )
 }
    

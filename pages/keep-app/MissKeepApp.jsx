@@ -8,7 +8,7 @@ export class MissKeepApp extends React.Component {
         notes: [],
         newNote: keepService.getEmptyNote(),
         style: {
-            opacity: [1,0.5,0.5,0.5]
+            opacity: [1, 0.3, 0.3, 0.3]
         }
     }
 
@@ -45,7 +45,6 @@ export class MissKeepApp extends React.Component {
 
     getPlaceholderTxt() {
         const noteType = this.state.newNote.type;
-        this.setState({style: {opacity: [0.5, 0.5, 0.5, 0.5]}})
         switch (noteType) {
             case 'NoteTxt':
                 return 'What\'s on your mind...'
@@ -67,12 +66,32 @@ export class MissKeepApp extends React.Component {
 
     onNoteType = (ev) => {
         const newNoteType = ev.target.dataset.type;
-        this.setState({ newNote: { ...this.state.newNote, type: newNoteType } })
+        let opacityArr = [0.3, 0.3, 0.3, 0.3];
+        switch (newNoteType) {
+            case 'NoteTxt':
+                opacityArr[0] = 1;
+                break;
+            case 'NoteImg':
+                opacityArr[1] = 1;
+                break;
+            case 'NoteVideo':
+                opacityArr[2] = 1;
+                break;
+            case 'NoteTodos':
+                opacityArr[3] = 1;
+                break;
+            default: break;
+        }
+        this.setState({ newNote: { ...this.state.newNote, type: newNoteType }, style: { opacity: opacityArr } })
     }
 
     todoClicked = (todos, todoId) => {
         keepService.toggleTodo(todos, todoId)
         this.loadNote()
+    }
+
+    listItemClicked = (ev) => {
+        console.log(ev);
     }
 
 
@@ -87,17 +106,17 @@ export class MissKeepApp extends React.Component {
                         <input className="new-note-input" type="text" placeholder={this.getPlaceholderTxt()} value={this.state.newNote.inputContent}
                             onChange={this.onNewNoteTxt} />
                         <section className="note-type-picker flex">
-                            <li className="txt-note" ><img data-type="NoteTxt" onClick={this.onNoteType} style={this.state.style} src="../../assets/img/font-icon.png" alt="" /></li>
-                            <li className="img-note" ><img data-type="NoteImg" onClick={this.onNoteType} style={this.state.style} src="../../assets/img/picture-icon.png" alt="" /></li>
-                            <li className="video-note"><img data-type="NoteVideo" onClick={this.onNoteType} style={this.state.style} src="../../assets/img/youtube-icon.png" alt="" /></li>
-                            <li className="todo-note" ><img data-type="NoteTodos" onClick={this.onNoteType} style={this.state.style} src="../../assets/img/todo-icon.png" alt="" /></li>
+                            <li className="txt-note" ><img data-type="NoteTxt" onClick={this.onNoteType} style={{ opacity: this.state.style.opacity[0] }} src="../../assets/img/font-icon.png" alt="" /></li>
+                            <li className="img-note" ><img data-type="NoteImg" onClick={this.onNoteType} style={{ opacity: this.state.style.opacity[1] }} src="../../assets/img/picture-icon.png" alt="" /></li>
+                            <li className="video-note"><img data-type="NoteVideo" onClick={this.onNoteType} style={{ opacity: this.state.style.opacity[2] }} src="../../assets/img/youtube-icon.png" alt="" /></li>
+                            <li className="todo-note" ><img data-type="NoteTodos" onClick={this.onNoteType} style={{ opacity: this.state.style.opacity[3] }} src="../../assets/img/todo-icon.png" alt="" /></li>
                             <button className="add-note" onClick={this.addNote}>Add</button>
                         </section>
                     </ul>
                     {(this.state.newNote.type !== 'NoteTxt') && <ExpandNoteInput noteType={this.state.newNote.type}
                         onInputChange={this.onNewNoteTxt} />}
                 </section>
-                <NoteList notes={notesToShow} onRemoveNoteBtn={this.removeNote} onTodoClick={this.todoClicked} />
+                <NoteList notes={notesToShow} onRemoveNoteBtn={this.removeNote} onItemClick={this.listItemClicked} onTodoClick={this.todoClicked} />
             </section>
         )
     }

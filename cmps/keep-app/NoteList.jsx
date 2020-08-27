@@ -15,10 +15,10 @@ export function NoteList(props) {
                 return <NoteTodos {...props}/>
         }
     }
-    return (<ul className="note-list clean-list">
+    return (<ul className="note-list clean-list grid">
         {props.notes.map(note => {
             const noteType = note.type;            
-            return <li key={note.id}>
+            return <li onClick={()=> props.onItemClick(note)} key={note.id}>
                 {/* ADD DYNAMIC CPM FOR SHOW DIFFERENT TYPES OF NOTES */}
                 <DynamicCmp note={note} type={noteType} onRemoveNoteBtn={props.onRemoveNoteBtn} onTodoClick={props.onTodoClick}/>
             </li>

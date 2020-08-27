@@ -12,6 +12,35 @@
     min-width: 200px;
 }
 
+/* EXTANDED NOTE INPUT */
+.more-content-input {
+    margin: 5px auto;
+}
+
+/* NOTE LIST */
+
+.note-list {
+    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+    grid-gap: 10px;
+}
+
+.note-list li * {
+    margin: 0;
+}
+
+.note-list li{
+    padding: 5px;
+    height: 100%;
+}
+
+.note-list li:hover{
+    cursor: pointer;
+}
+
+.text-note{
+    padding: 10px;
+}
+
 
 /* HELPERS */
 

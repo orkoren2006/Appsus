@@ -2,6 +2,10 @@
 @import "./email-app/main-email.css";
 @import "./keep-app/main-keep.css";
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: lightblue;
 }
@@ -38,4 +42,8 @@ body {
 
 .space-between {
     justify-content: space-between;
+}
+
+.grid {
+    display: grid;
 }
