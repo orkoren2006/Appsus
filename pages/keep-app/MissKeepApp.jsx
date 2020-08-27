@@ -1,6 +1,8 @@
 import { keepService } from "../../services/keep-service.js";
 import { NoteList } from "../../cmps/keep-app/NoteList.jsx";
 import { ExpandNoteInput } from "../../cmps/keep-app/ExpandNoteInput.jsx";
+import { Modal } from "../../cmps/Modal.jsx";
+import { NoteEdit } from "../../cmps/keep-app/NoteEdit.jsx";
 
 
 export class MissKeepApp extends React.Component {
@@ -9,7 +11,8 @@ export class MissKeepApp extends React.Component {
         newNote: keepService.getEmptyNote(),
         style: {
             opacity: [1, 0.3, 0.3, 0.3]
-        }
+        },
+        noteToEdit: null
     }
 
     componentDidMount() {
@@ -36,6 +39,7 @@ export class MissKeepApp extends React.Component {
     }
 
     onNewNoteTxt = (ev) => {
+        console.log(ev.target);
         if (ev.target.name === 'second-input') {
             this.setState({ newNote: { ...this.state.newNote, moreContent: ev.target.value } })
         } else {
@@ -90,13 +94,18 @@ export class MissKeepApp extends React.Component {
         this.loadNote()
     }
 
-    listItemClicked = (ev) => {
-        console.log(ev);
+    listItemClicked = (ev, note) => {
+        if (ev.target.type === 'color' || ev.target.name === 'btn') return
+        this.setState({ noteToEdit: [note] })
     }
 
-    noteColorChanged = (ev,note) => {
-        keepService.setNoteColor(note,ev.target.value)
+    noteColorChanged = (ev, note) => {
+        keepService.setNoteColor(note, ev.target.value)
         this.loadNote()
+    }
+
+    closeModal = () => {
+        this.setState({ noteToEdit: null })
     }
 
 
@@ -134,11 +143,17 @@ export class MissKeepApp extends React.Component {
                         onInputChange={this.onNewNoteTxt} />}
                 </section>
                 <NoteList notes={notesToShow}
+                    onChangeItem={this.onNewNoteTxt}
                     onRemoveNoteBtn={this.removeNote}
                     onItemClick={this.listItemClicked}
                     onChangeColor={this.noteColorChanged}
                     onTodoClick={this.todoClicked}
                 />
+                {/* {this.state.noteToEdit && <Modal onCloseModal={this.closeModal}>
+                    <NoteEdit notes={this.state.noteToEdit} />
+                    <NoteList notes={this.state.noteToEdit}
+                        onChanedItem={this.onNewNoteTxt} />
+                </Modal>} */}
             </section>
         )
     }
