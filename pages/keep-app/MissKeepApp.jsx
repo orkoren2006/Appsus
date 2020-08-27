@@ -6,7 +6,10 @@ import { ExpandNoteInput } from "../../cmps/keep-app/ExpandNoteInput.jsx";
 export class MissKeepApp extends React.Component {
     state = {
         notes: [],
-        newNote: keepService.getEmptyNote()
+        newNote: keepService.getEmptyNote(),
+        style: {
+            opacity: [1,0.5,0.5,0.5]
+        }
     }
 
     componentDidMount() {
@@ -15,7 +18,7 @@ export class MissKeepApp extends React.Component {
 
     loadNote() {
         keepService.query()
-            .then(notes => this.setState({ notes }), ()=> console.log(this.state.notes))
+            .then(notes => this.setState({ notes }), () => console.log(this.state.notes))
 
     }
 
@@ -24,7 +27,7 @@ export class MissKeepApp extends React.Component {
     }
     // REMOVE NOTE CAN GET NOTE - FROM CLICK ON THE NOTE - OR NOTE_ID FROM CLICK FROM REMOVE TODO BTN - THE ID IS OF THE SPECIFIC TODO AND NOT THE NOTE ID!!
     removeNote = (note, todoTxtId) => {
-        if (todoTxtId){
+        if (todoTxtId) {
             keepService.removeTodo(note, todoTxtId)
         } else {
             keepService.removeNote(note)
@@ -42,6 +45,7 @@ export class MissKeepApp extends React.Component {
 
     getPlaceholderTxt() {
         const noteType = this.state.newNote.type;
+        this.setState({style: {opacity: [0.5, 0.5, 0.5, 0.5]}})
         switch (noteType) {
             case 'NoteTxt':
                 return 'What\'s on your mind...'
@@ -50,7 +54,7 @@ export class MissKeepApp extends React.Component {
             case 'NoteVideo':
                 return 'Enter Video URL...'
             case 'NoteTodos':
-                return 'Enter comma seperated list...'
+                return 'Enter Todo...'
         }
     }
 
@@ -78,20 +82,22 @@ export class MissKeepApp extends React.Component {
         return (
             <section className="notes" >
                 <h1>I'm your KEEP app</h1>
-                <section className="new-note-container">
-                    <input type="text" placeholder={this.getPlaceholderTxt()} value={this.state.newNote.inputContent} 
+                <section className="new-note-container container">
+                    <ul className="new-note-type-list clean-list flex align-center center-content">
+                        <input className="new-note-input" type="text" placeholder={this.getPlaceholderTxt()} value={this.state.newNote.inputContent}
                             onChange={this.onNewNoteTxt} />
-                    <ul className="new-note-type-list">
-                        <li data-type="NoteTxt" className="txt-note" onClick={this.onNoteType}>Txt</li>
-                        <li data-type="NoteImg" className="img-note" onClick={this.onNoteType}>Img</li>
-                        <li data-type="NoteVideo" className="video-note" onClick={this.onNoteType}>Video</li>
-                        <li data-type="NoteTodos" className="todo-note" onClick={this.onNoteType}>Todo</li>
+                        <section className="note-type-picker flex">
+                            <li className="txt-note" ><img data-type="NoteTxt" onClick={this.onNoteType} style={this.state.style} src="../../assets/img/font-icon.png" alt="" /></li>
+                            <li className="img-note" ><img data-type="NoteImg" onClick={this.onNoteType} style={this.state.style} src="../../assets/img/picture-icon.png" alt="" /></li>
+                            <li className="video-note"><img data-type="NoteVideo" onClick={this.onNoteType} style={this.state.style} src="../../assets/img/youtube-icon.png" alt="" /></li>
+                            <li className="todo-note" ><img data-type="NoteTodos" onClick={this.onNoteType} style={this.state.style} src="../../assets/img/todo-icon.png" alt="" /></li>
+                            <button className="add-note" onClick={this.addNote}>Add</button>
+                        </section>
                     </ul>
-                    {(this.state.newNote.type !== 'NoteTxt') && <ExpandNoteInput noteType={this.state.newNote.type} 
+                    {(this.state.newNote.type !== 'NoteTxt') && <ExpandNoteInput noteType={this.state.newNote.type}
                         onInputChange={this.onNewNoteTxt} />}
-                    <button className="add-note" onClick={this.addNote}>Add</button>
                 </section>
-                <NoteList notes={notesToShow} onRemoveNoteBtn={this.removeNote} onTodoClick={this.todoClicked}/>
+                <NoteList notes={notesToShow} onRemoveNoteBtn={this.removeNote} onTodoClick={this.todoClicked} />
             </section>
         )
     }

@@ -1,3 +1,18 @@
+/* COMPONENTS */
+
+/* ADD NOTE BAR */
+
+.new-note-type-list *{
+    padding: 10px;
+    margin: 5px;
+}
+
+/* NEW NOTE INPUT */
+.new-note-input {
+    min-width: 200px;
+}
+
+
 /* HELPERS */
 
 .done {

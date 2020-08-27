@@ -5,3 +5,37 @@
 body {
     background-color: lightblue;
 }
+
+
+/* HELPERS */ 
+
+.container {
+    max-width: 1200px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.clean-list {
+    list-style: none
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.center-content {
+    justify-content: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
