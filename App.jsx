@@ -8,7 +8,7 @@ const { Route, Switch } = ReactRouterDOM
 import { Home } from './pages/Home.jsx'
 import { MissBookApp } from './pages/book-app/MissBookApp.jsx'
 import { MisterEmailApp } from './pages/email-app/MisterEmailApp.jsx'
-// import { MissKeepApp } from './pages/keep-app/MissKeepApp.jsx'
+import { MissKeepApp } from './pages/keep-app/MissKeepApp.jsx'
 import { NavBar } from './cmps/NavBar.jsx'
 
 export class App extends React.Component {
@@ -25,7 +25,7 @@ export class App extends React.Component {
                         <Switch>
                             <Route component={MisterEmailApp} path="/email" />
                             <Route component={MissBookApp} path="/book" />
-                            {/* <Route component={MissKeepApp} path="/keep" /> */}
+                            <Route component={MissKeepApp} path="/keep" />
                             <Route component={Home} path="/" />
                         </Switch>
                     </main>

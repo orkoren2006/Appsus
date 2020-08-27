@@ -9,7 +9,8 @@ export const keepService = {
     addNote,
     getEmptyNote,
     removeTodo,
-    toggleTodo
+    toggleTodo,
+    setNoteColor
 }
 
 var notes;
@@ -21,6 +22,9 @@ var gNotes = [
         isPinned: true,
         info: {
             txt: "Fullstack Me Baby!"
+        },
+        style: {
+            bcg: '#FF0000'
         }
     },
     {
@@ -29,6 +33,9 @@ var gNotes = [
         isPinned: true,
         info: {
             txt: "How was it"
+        },
+        style: {
+            bcg: '#FF0000'
         }
     },
     {
@@ -37,6 +44,9 @@ var gNotes = [
         isPinned: true,
         info: {
             txt: "Me playing Mi!"
+        },
+        style: {
+            bcg: '#FF0000'
         }
     }
 ];
@@ -56,8 +66,8 @@ function removeNote(noteToRemove) {
 }
 
 function removeTodo(todoNote, todoId) {
-    todoNote.info.todos = todoNote.info.todos.filter(todo => {return todo.id !== todoId})
-    storageService.saveToStorage(NOTES_KEY,notes)
+    todoNote.info.todos = todoNote.info.todos.filter(todo => { return todo.id !== todoId })
+    storageService.saveToStorage(NOTES_KEY, notes)
 }
 
 function addNote(note) {
@@ -70,6 +80,9 @@ function addNote(note) {
                 isPinned: true,
                 info: {
                     txt: note.inputContent
+                },
+                style: {
+                    bcg: '#FF0000'
                 }
             }
             break;
@@ -81,7 +94,7 @@ function addNote(note) {
                     title: note.moreContent
                 },
                 style: {
-                    backgroundColor: '#00d'
+                    bcg: '#FF0000'
                 }
             }
             break;
@@ -93,7 +106,7 @@ function addNote(note) {
                     title: note.moreContent
                 },
                 style: {
-                    backgroundColor: '#00d'
+                    bcg: '#FF0000'
                 }
             }
             break;
@@ -101,6 +114,7 @@ function addNote(note) {
             newNote = {
                 type: "NoteTodos",
                 info: {
+                    color: '#FF0000',
                     label: note.inputContent,
                     todos: [
                         {
@@ -109,7 +123,11 @@ function addNote(note) {
                             id: utilService.makeId(),
                             isDone: false
                         },
-                    ]
+
+                    ],
+                },
+                style: {
+                    backgroundColor: '#FF0000'
                 }
             }
             break;
@@ -121,9 +139,9 @@ function addNote(note) {
     storageService.saveToStorage(NOTES_KEY, notes)
 }
 
-function toggleTodo(todos,todoId){
+function toggleTodo(todos, todoId) {
     todos.forEach(todo => {
-        if (todo.id === todoId) todo.isDone = !todo.isDone; 
+        if (todo.id === todoId) todo.isDone = !todo.isDone;
     })
     storageService.saveToStorage(NOTES_KEY, notes)
 }
@@ -134,4 +152,12 @@ function getEmptyNote() {
         inputContent: '',
         moreContent: ''
     }
+}
+
+function setNoteColor(note, bcg) {
+
+    notes.forEach(item => {
+        if (item === note) note.style.bcg = bcg;
+    })
+    storageService.saveToStorage(NOTES_KEY,notes)
 }

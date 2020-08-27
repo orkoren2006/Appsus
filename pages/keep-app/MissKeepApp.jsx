@@ -18,7 +18,7 @@ export class MissKeepApp extends React.Component {
 
     loadNote() {
         keepService.query()
-            .then(notes => this.setState({ notes }), () => console.log(this.state.notes))
+            .then(notes => this.setState({ notes }))
 
     }
 
@@ -94,6 +94,11 @@ export class MissKeepApp extends React.Component {
         console.log(ev);
     }
 
+    noteColorChanged = (ev,note) => {
+        keepService.setNoteColor(note,ev.target.value)
+        this.loadNote()
+    }
+
 
     render() {
         const notesToShow = this.getNotesForDisplay();
@@ -106,17 +111,34 @@ export class MissKeepApp extends React.Component {
                         <input className="new-note-input" type="text" placeholder={this.getPlaceholderTxt()} value={this.state.newNote.inputContent}
                             onChange={this.onNewNoteTxt} />
                         <section className="note-type-picker flex">
-                            <li className="txt-note" ><img data-type="NoteTxt" onClick={this.onNoteType} style={{ opacity: this.state.style.opacity[0] }} src="../../assets/img/font-icon.png" alt="" /></li>
-                            <li className="img-note" ><img data-type="NoteImg" onClick={this.onNoteType} style={{ opacity: this.state.style.opacity[1] }} src="../../assets/img/picture-icon.png" alt="" /></li>
-                            <li className="video-note"><img data-type="NoteVideo" onClick={this.onNoteType} style={{ opacity: this.state.style.opacity[2] }} src="../../assets/img/youtube-icon.png" alt="" /></li>
-                            <li className="todo-note" ><img data-type="NoteTodos" onClick={this.onNoteType} style={{ opacity: this.state.style.opacity[3] }} src="../../assets/img/todo-icon.png" alt="" /></li>
+                            <li className="txt-note" >
+                                <img data-type="NoteTxt" onClick={this.onNoteType}
+                                    style={{ opacity: this.state.style.opacity[0] }}
+                                    src="../../assets/img/font-icon.png" alt="" /></li>
+                            <li className="img-note" >
+                                <img data-type="NoteImg" onClick={this.onNoteType}
+                                    style={{ opacity: this.state.style.opacity[1] }}
+                                    src="../../assets/img/picture-icon.png" alt="" /></li>
+                            <li className="video-note">
+                                <img data-type="NoteVideo" onClick={this.onNoteType}
+                                    style={{ opacity: this.state.style.opacity[2] }}
+                                    src="../../assets/img/youtube-icon.png" alt="" /></li>
+                            <li className="todo-note" >
+                                <img data-type="NoteTodos" onClick={this.onNoteType}
+                                    style={{ opacity: this.state.style.opacity[3] }}
+                                    src="../../assets/img/todo-icon.png" alt="" /></li>
                             <button className="add-note" onClick={this.addNote}>Add</button>
                         </section>
                     </ul>
                     {(this.state.newNote.type !== 'NoteTxt') && <ExpandNoteInput noteType={this.state.newNote.type}
                         onInputChange={this.onNewNoteTxt} />}
                 </section>
-                <NoteList notes={notesToShow} onRemoveNoteBtn={this.removeNote} onItemClick={this.listItemClicked} onTodoClick={this.todoClicked} />
+                <NoteList notes={notesToShow}
+                    onRemoveNoteBtn={this.removeNote}
+                    onItemClick={this.listItemClicked}
+                    onChangeColor={this.noteColorChanged}
+                    onTodoClick={this.todoClicked}
+                />
             </section>
         )
     }

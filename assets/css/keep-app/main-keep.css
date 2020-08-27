@@ -21,12 +21,15 @@
 
 .note-list {
     grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+    grid-template-rows: repeat(auto-fit, minmax(50px,1fr));
+    /* grid-auto-rows: minmax(100px,1fr); */
     grid-gap: 10px;
+    grid-auto-flow: dense;
 }
 
-.note-list li * {
+/* .note-list li * {
     margin: 0;
-}
+} */
 
 .note-list li{
     padding: 5px;
@@ -37,8 +40,31 @@
     cursor: pointer;
 }
 
-.text-note{
+.text-note, .img-note{
     padding: 10px;
+    border-radius: 10px;
+}
+
+.NoteImg{
+    grid-row: span 3;
+}
+
+.text-note > :first-child{
+    margin-top: 0;
+}
+
+.txt{
+    margin: 0px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+
+.note-img{
+    height: 100%;
+    width: 100%;
+    grid-row: span 3;
 }
 
 
