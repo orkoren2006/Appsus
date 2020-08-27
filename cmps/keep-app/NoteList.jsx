@@ -18,12 +18,11 @@ export function NoteList(props) {
     return (<ul className="note-list clean-list grid">
         {props.notes.map(note => {
             const noteType = note.type;
-            return <li className={noteType} onClick={() => props.onItemClick(note)} key={note.id}>
+            return <li className={noteType} onClick={(ev) => props.onItemClick(ev,note)} key={note.id}>
                 <DynamicCmp note={note} type={noteType}
                     onColorChange={props.onChangeColor}
                     onRemoveNoteBtn={props.onRemoveNoteBtn}
                     onTodoClick={props.onTodoClick}
-
                     />
             </li>
         })}
