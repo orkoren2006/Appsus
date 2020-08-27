@@ -15,16 +15,20 @@ export class MissKeepApp extends React.Component {
 
     loadNote() {
         keepService.query()
-            .then(notes => this.setState({ notes }))
+            .then(notes => this.setState({ notes }), ()=> console.log(this.state.notes))
 
     }
 
     getNotesForDisplay() {
         return this.state.notes;
     }
-
-    removeNote = (note) => {
-        keepService.removeNote(note)
+    // REMOVE NOTE CAN GET NOTE - FROM CLICK ON THE NOTE - OR NOTE_ID FROM CLICK FROM REMOVE TODO BTN - THE ID IS OF THE SPECIFIC TODO AND NOT THE NOTE ID!!
+    removeNote = (note, todoTxtId) => {
+        if (todoTxtId){
+            keepService.removeTodo(note, todoTxtId)
+        } else {
+            keepService.removeNote(note)
+        }
         this.loadNote()
     }
 
@@ -62,6 +66,11 @@ export class MissKeepApp extends React.Component {
         this.setState({ newNote: { ...this.state.newNote, type: newNoteType } })
     }
 
+    todoClicked = (todos, todoId) => {
+        keepService.toggleTodo(todos, todoId)
+        this.loadNote()
+    }
+
 
     render() {
         const notesToShow = this.getNotesForDisplay();
@@ -82,7 +91,7 @@ export class MissKeepApp extends React.Component {
                         onInputChange={this.onNewNoteTxt} />}
                     <button className="add-note" onClick={this.addNote}>Add</button>
                 </section>
-                <NoteList notes={notesToShow} onRemoveNoteBtn={this.removeNote} />
+                <NoteList notes={notesToShow} onRemoveNoteBtn={this.removeNote} onTodoClick={this.todoClicked}/>
             </section>
         )
     }

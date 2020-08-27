@@ -1,5 +1,5 @@
 
-export class NoteImg extends React.Component {
+export class NoteImgVid extends React.Component {
 
     state = {
         style: {

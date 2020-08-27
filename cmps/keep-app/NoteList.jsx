@@ -1,5 +1,6 @@
 import {NoteTxt} from './NoteTxt.jsx'
-import {NoteImg} from './NoteImg.jsx'
+import {NoteImgVid} from './NoteImg.jsx'
+import {NoteTodos} from './NoteTodos.jsx'
 
 export function NoteList(props) {
     function DynamicCmp(props){
@@ -7,7 +8,11 @@ export function NoteList(props) {
             case 'NoteText':
                 return <NoteTxt {...props}/>
             case 'NoteImg':
-                return <NoteImg {...props}/>
+                return <NoteImgVid {...props}/>
+            case 'NoteVideo':
+                return <NoteImgVid {...props}/>
+            case 'NoteTodos':
+                return <NoteTodos {...props}/>
         }
     }
     return (<ul className="note-list clean-list">
@@ -15,7 +20,7 @@ export function NoteList(props) {
             const noteType = note.type;            
             return <li key={note.id}>
                 {/* ADD DYNAMIC CPM FOR SHOW DIFFERENT TYPES OF NOTES */}
-                <DynamicCmp note={note} type={noteType} onRemoveNoteBtn={props.onRemoveNoteBtn}/>
+                <DynamicCmp note={note} type={noteType} onRemoveNoteBtn={props.onRemoveNoteBtn} onTodoClick={props.onTodoClick}/>
             </li>
         })}
     </ul>)

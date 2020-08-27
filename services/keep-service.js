@@ -7,7 +7,9 @@ export const keepService = {
     query,
     removeNote,
     addNote,
-    getEmptyNote
+    getEmptyNote,
+    removeTodo,
+    toggleTodo
 }
 
 var notes;
@@ -53,6 +55,11 @@ function removeNote(noteToRemove) {
     storageService.saveToStorage(NOTES_KEY, notes)
 }
 
+function removeTodo(todoNote, todoId) {
+    todoNote.info.todos = todoNote.info.todos.filter(todo => {return todo.id !== todoId})
+    storageService.saveToStorage(NOTES_KEY,notes)
+}
+
 function addNote(note) {
     let newNote;
     const noteId = utilService.makeId();
@@ -83,7 +90,7 @@ function addNote(note) {
                 type: note.type,
                 info: {
                     url: note.inputContent,
-                    title: 'New Img Note'
+                    title: note.moreContent
                 },
                 style: {
                     backgroundColor: '#00d'
@@ -94,10 +101,14 @@ function addNote(note) {
             newNote = {
                 type: "NoteTodos",
                 info: {
-                    label: "How was it:",
+                    label: note.inputContent,
                     todos: [
-                        { txt: "Do that", doneAt: null },
-                        { txt: "Do this", doneAt: 187111111 }
+                        {
+                            txt: note.moreContent,
+                            doneAt: Date.now(),
+                            id: utilService.makeId(),
+                            isDone: false
+                        },
                     ]
                 }
             }
@@ -107,6 +118,13 @@ function addNote(note) {
 
     newNote['id'] = noteId;
     notes.push(newNote)
+    storageService.saveToStorage(NOTES_KEY, notes)
+}
+
+function toggleTodo(todos,todoId){
+    todos.forEach(todo => {
+        if (todo.id === todoId) todo.isDone = !todo.isDone; 
+    })
     storageService.saveToStorage(NOTES_KEY, notes)
 }
 
