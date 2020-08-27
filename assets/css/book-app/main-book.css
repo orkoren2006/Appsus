@@ -4,6 +4,7 @@
 
 .price-filter{
     margin-inline-end: 20px;
+    margin-block-end: 20px;
 }
 
 .book-list{
@@ -18,13 +19,22 @@
 /* book-GALLERY */
 
 .book-list{
-    grid-template-columns: repeat(auto-fill,minmax(100px,1fr));
+    grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
     grid-row: 100px;
-    gap: 10px;
+    gap: 30px 10px;
 }
 
 .book-img{
     height: 90%;
     width: 90%;
-    margin: 0px auto;
+    margin: 0px 5px;
+}
+
+.book-list a{
+    text-decoration: none;
+    color: black;
+}
+
+.book-text *{
+    margin: 2px auto;
 }
