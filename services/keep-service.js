@@ -136,7 +136,6 @@ function addNote(note) {
     }
     // debugger
     newNote['id'] = noteId;
-    console.log(newNote);
     notes.push(newNote)
     storageService.saveToStorage(NOTES_KEY, notes)
     return newNote;
@@ -177,5 +176,4 @@ function addTodo(noteToEdit,txt){
     let noteToEditIdx = notes.findIndex(note => noteToEdit.id === note.id)
     notes[noteToEditIdx].info.todos.push(newTodo)
     storageService.saveToStorage(NOTES_KEY, notes)
-    // return notes[noteToEditIdx]
 }

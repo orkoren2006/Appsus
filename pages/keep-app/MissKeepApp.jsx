@@ -41,12 +41,6 @@ export class MissKeepApp extends React.Component {
 
     onNewNoteTxt = (ev) => {
         if (ev.target.name === 'second-input') {
-            // this.setState({
-            //     newNote: {
-            //         ...this.state.newNote,
-            //         moreContent: [...this.state.newNote.moreContent, ev.target.value]
-            //     }
-            // })
             this.setState({ newNote: { ...this.state.newNote, moreContent: [ev.target.value] } })
         } else {
             this.setState({ newNote: { ...this.state.newNote, inputContent: ev.target.value } })
@@ -164,6 +158,7 @@ export class MissKeepApp extends React.Component {
                     </ul>
                     {(this.state.newNote.type !== 'NoteTxt') &&
                         <ExpandNoteInput
+                            placeholder={this.state.newNote.moreContent}
                             noteType={this.state.newNote.type}
                             onInputChange={this.onNewNoteTxt}
                             onAddTodo={this.addTodo} />}
