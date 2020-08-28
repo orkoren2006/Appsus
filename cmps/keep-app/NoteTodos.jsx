@@ -7,8 +7,8 @@ export class NoteTodos extends React.Component {
         },
     }
 
-    getClass(todo){
-        const todoClassName = (todo.isDone) ? 'done':'';
+    getClass(todo) {
+        const todoClassName = (todo.isDone) ? 'done' : '';
         return todoClassName;
     }
 

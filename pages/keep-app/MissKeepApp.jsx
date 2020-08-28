@@ -12,7 +12,8 @@ export class MissKeepApp extends React.Component {
         style: {
             opacity: [1, 0.3, 0.3, 0.3]
         },
-        noteToEdit: null
+        noteToEdit: null,
+        noteTodoInPrep: null,
     }
 
     componentDidMount() {
@@ -39,9 +40,14 @@ export class MissKeepApp extends React.Component {
     }
 
     onNewNoteTxt = (ev) => {
-        console.log(ev.target);
         if (ev.target.name === 'second-input') {
-            this.setState({ newNote: { ...this.state.newNote, moreContent: ev.target.value } })
+            // this.setState({
+            //     newNote: {
+            //         ...this.state.newNote,
+            //         moreContent: [...this.state.newNote.moreContent, ev.target.value]
+            //     }
+            // })
+            this.setState({ newNote: { ...this.state.newNote, moreContent: [ev.target.value] } })
         } else {
             this.setState({ newNote: { ...this.state.newNote, inputContent: ev.target.value } })
         }
@@ -62,9 +68,24 @@ export class MissKeepApp extends React.Component {
     }
 
     addNote = () => {
-        keepService.addNote(this.state.newNote)
-        this.loadNote()
-        this.setState({ newNote: keepService.getEmptyNote() })
+        if (this.state.newNote.id) {
+            this.setState({ newNote: keepService.getEmptyNote() })
+        } else {
+            keepService.addNote(this.state.newNote)
+            this.loadNote()
+            this.setState({ newNote: keepService.getEmptyNote() })
+        }
+    }
+
+    addTodo = () => {
+        if (!this.state.newNote.id) {
+            let note = keepService.addNote(this.state.newNote);
+            this.loadNote()
+            this.setState({ newNote: note })
+        } else {
+            keepService.addTodo(this.state.newNote, this.state.newNote.moreContent)
+            this.loadNote()
+        }
 
     }
 
@@ -117,7 +138,9 @@ export class MissKeepApp extends React.Component {
                 <h1>I'm your KEEP app</h1>
                 <section className="new-note-container container">
                     <ul className="new-note-type-list clean-list flex align-center center-content">
-                        <input className="new-note-input" type="text" placeholder={this.getPlaceholderTxt()} value={this.state.newNote.inputContent}
+                        <input className="new-note-input" type="text"
+                            placeholder={this.getPlaceholderTxt()}
+                            value={this.state.newNote.inputContent}
                             onChange={this.onNewNoteTxt} />
                         <section className="note-type-picker flex">
                             <li className="txt-note" >
@@ -136,11 +159,14 @@ export class MissKeepApp extends React.Component {
                                 <img data-type="NoteTodos" onClick={this.onNoteType}
                                     style={{ opacity: this.state.style.opacity[3] }}
                                     src="../../assets/img/todo-icon.png" alt="" /></li>
-                            <button className="add-note" onClick={this.addNote}>Add</button>
+                            <button className="add-note" onClick={this.addNote}>Add Note</button>
                         </section>
                     </ul>
-                    {(this.state.newNote.type !== 'NoteTxt') && <ExpandNoteInput noteType={this.state.newNote.type}
-                        onInputChange={this.onNewNoteTxt} />}
+                    {(this.state.newNote.type !== 'NoteTxt') &&
+                        <ExpandNoteInput
+                            noteType={this.state.newNote.type}
+                            onInputChange={this.onNewNoteTxt}
+                            onAddTodo={this.addTodo} />}
                 </section>
                 <NoteList notes={notesToShow}
                     onChangeItem={this.onNewNoteTxt}

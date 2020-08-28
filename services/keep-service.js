@@ -10,7 +10,8 @@ export const keepService = {
     getEmptyNote,
     removeTodo,
     toggleTodo,
-    setNoteColor
+    setNoteColor,
+    addTodo
 }
 
 var notes;
@@ -133,10 +134,12 @@ function addNote(note) {
             break;
         default: break;
     }
-
+    // debugger
     newNote['id'] = noteId;
+    console.log(newNote);
     notes.push(newNote)
     storageService.saveToStorage(NOTES_KEY, notes)
+    return newNote;
 }
 
 function toggleTodo(todos, todoId) {
@@ -150,7 +153,7 @@ function getEmptyNote() {
     return {
         type: 'NoteTxt',
         inputContent: '',
-        moreContent: ''
+        moreContent: [],
     }
 }
 
@@ -160,4 +163,19 @@ function setNoteColor(note, bcg) {
         if (item === note) note.style.bcg = bcg;
     })
     storageService.saveToStorage(NOTES_KEY,notes)
+}
+
+function addTodo(noteToEdit,txt){
+
+    let newTodo = {
+        txt,
+        doneAt: Date.now(),
+        id: utilService.makeId(),
+        isDone: false
+    }
+
+    let noteToEditIdx = notes.findIndex(note => noteToEdit.id === note.id)
+    notes[noteToEditIdx].info.todos.push(newTodo)
+    storageService.saveToStorage(NOTES_KEY, notes)
+    // return notes[noteToEditIdx]
 }

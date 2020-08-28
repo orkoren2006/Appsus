@@ -494,7 +494,6 @@ function getBlankReview() {
 function getGooglsBookByTitle(title) {
   
   const searchURL = `${GOOGLE_BOOKS_URL}${title}+intitle:${title}${API_KEY_STR}`
-  console.log(searchURL);
   let googleBooksPrm = axios.get(searchURL);
   return googleBooksPrm.then(books => {
     return books.data
