@@ -2,21 +2,17 @@
 import { storageService } from './storage-service.js'
 
 const BOOKS_KEY = 'myBooks';
-// const GOOGLE_BOOKS_URL = 'https://www.googleapis.com/books/v1/volumes?q='; //flowers+inauthor:keyes&key=yourAPIKey
-// const API_KEY_STR = '&key=AIzaSyCKBwiGr53wdCHGBSkyIJFBIUMRuTuOM3c'; //flowers+inauthor:keyes&key=yourAPIKey
+const GOOGLE_BOOKS_URL = 'https://www.googleapis.com/books/v1/volumes?q=';
+const API_KEY_STR = '&key=AIzaSyCKBwiGr53wdCHGBSkyIJFBIUMRuTuOM3c'; 
 
 export const bookService = {
   query,
   getBookById,
-//   addReview,
-//   getBlankReview,
-//   getGooglsBookByTitle,
-//   addBook
+  addReview,
+  getBlankReview,
+  getGooglsBookByTitle,
+  addBook
 }
-
-// add,
-//     getEmpty,
-//     remove
 
 var gBooks = [
   {
@@ -473,90 +469,59 @@ function query() {
   return Promise.resolve(books)
 }
 
-function getBookById(id) {
+function getBookById(books,id) {
   const book = books.find(book => book.id === id);
   return Promise.resolve(book)
 }
 
-// function addReview(book, reviewToAdd) {
-//   if (!book.review) book['review'] = [reviewToAdd];
-//   else book['review'].push(reviewToAdd);
-//   storageService.saveBooksToStorage(BOOKS_KEY, books)
-// }
+function addReview(book, reviewToAdd) {
+  if (!book.review) book['review'] = [reviewToAdd];
+  else book['review'].push(reviewToAdd);
+  storageService.saveBooksToStorage(BOOKS_KEY, books)
+}
 
 
 
-// function getBlankReview() {
-//   return {
-//     name: '',
-//     rate: '',
-//     'read-date': '',
-//     'free-text': ''
-//   }
-// }
+function getBlankReview() {
+  return {
+    name: '',
+    rate: '',
+    'read-date': '',
+    'free-text': ''
+  }
+}
 
-// function getGooglsBookByTitle(title) {
-//   const searchURL = `${GOOGLE_BOOKS_URL}${title}+intitle:${title}${API_KEY_STR}`
+function getGooglsBookByTitle(title) {
+  
+  const searchURL = `${GOOGLE_BOOKS_URL}${title}+intitle:${title}${API_KEY_STR}`
+  console.log(searchURL);
+  let googleBooksPrm = axios.get(searchURL);
+  return googleBooksPrm.then(books => {
+    return books.data
+  })
+}
 
-//   let googleBooksPrm = axios.get(searchURL);
-//   return googleBooksPrm.then(books => {
-//     return books.data
-//   })
-// }
+function addBook(book) {
+  console.log(book);
+  var isOnSale = (book.saleInfo.saleability === 'FOR_SALE') ? true:false;
+  const bookToAdd = {
+    "id": book.id,
+    "title": book.volumeInfo.title,
+    "subtitle": book.volumeInfo.subtitle,
+    "authors": book.volumeInfo.authors,
+    "publishedDate": book.volumeInfo.publishedDate,
+    "description": book.volumeInfo.description,
+    "pageCount": book.volumeInfo.pageCount,
+    "categories": book.volumeInfo.categories,
+    "thumbnail": book.volumeInfo.imageLinks.thumbnail,
+    "language": book.volumeInfo.language,
+    "listPrice": {
+      "amount": book.saleInfo.listPrice.amount,
+      "currencyCode": book.saleInfo.listPrice.currencyCode,
+      "isOnSale": isOnSale
+    }
+  }
 
-// function addBook(book) {
-
-//   var isOnSale = (book.saleInfo.saleability === 'FOR_SALE') ? true:false;
-//   const bookToAdd = {
-//     "id": book.id,
-//     "title": book.volumeInfo.title,
-//     "subtitle": book.volumeInfo.subtitle,
-//     "authors": book.volumeInfo.authors,
-//     "publishedDate": book.volumeInfo.publishedDate,
-//     "description": book.volumeInfo.description,
-//     "pageCount": book.volumeInfo.pageCount,
-//     "categories": book.volumeInfo.categories,
-//     "thumbnail": book.volumeInfo.imageLinks.thumbnail,
-//     "language": book.volumeInfo.language,
-//     "listPrice": {
-//       "amount": book.saleInfo.listPrice.amount,
-//       "currencyCode": book.saleInfo.listPrice.currencyCode,
-//       "isOnSale": isOnSale
-//     }
-//   }
-
-//   books.push(bookToAdd)
-//   storageService.saveBooksToStorage(BOOKS_KEY, books)
-// }
-
-// function _getDate() {
-//   let date = Date().now;
-//   return `${date.getDay()}/${date.getMonth()}/${date.getYear()}`
-//   // return `${date.getDay()}/${date.getMonth()}/${date.getYear()}`
-// }
-
-
-// function getEmpty() {
-//     return { name: '', power: 0 };
-// }
-// function add(pet) {
-//     const petToAdd = {
-//         ...pet,
-//         id: makeId()
-//     }
-//     pets = [petToAdd, ...pets]
-//     window.thePets = pets
-// }
-
-// function remove(petId) {
-//     pets = pets.filter(pet => pet.id !== petId)
-// }
-
-// function makeId(length=5) {
-//     var txt = '';
-//     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-//     for (var i = 0; i < length; i++) {
-//         txt += possible.charAt(Math.floor(Math.random() * possible.length));
-//     }
-//     return txt;
-// }
+  books.push(bookToAdd)
+  storageService.saveToStorage(BOOKS_KEY, books)
+}

@@ -2,7 +2,7 @@
 
 export function ReviewAdd({ onAddReview, onInputChange,review }) {
     
-    return <form className="flex-col" onSubmit={onAddReview}>
+    return <form className="review-form flex-col" onSubmit={onAddReview}>
         <input name="name" type="text" placeholder="Books Reader" value={review.name} onChange={(ev) => {
             onInputChange(ev.target.name, ev.target.value)
         }} />
