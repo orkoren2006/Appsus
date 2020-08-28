@@ -97,6 +97,7 @@ export class BookDetails extends React.Component {
                 {bookDescriptionLen < 100 && <p>{book.description}</p>}
             </div>
             <section className="book-review flex-col">
+                <h3 className="flex center-content">Add Review</h3>
                 <ReviewAdd onAddReview={this.addReview} onInputChange={this.updateReview} review={this.state.review} />
                 <Link to="/book/gallery"><button className="back-to-gallery-btn" onClick={this.onBackToGallery}>Back To Gallery</button></Link>
             </section>

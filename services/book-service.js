@@ -477,7 +477,7 @@ function getBookById(books,id) {
 function addReview(book, reviewToAdd) {
   if (!book.review) book['review'] = [reviewToAdd];
   else book['review'].push(reviewToAdd);
-  storageService.saveBooksToStorage(BOOKS_KEY, books)
+  storageService.saveToStorage(BOOKS_KEY, books)
 }
 
 

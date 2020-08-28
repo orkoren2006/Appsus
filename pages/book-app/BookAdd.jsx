@@ -11,14 +11,13 @@ export class BookAdd extends React.Component {
         const titleToSearch = ev.target.value;
         bookService.getGooglsBookByTitle(titleToSearch)
             .then(books => {
-                this.setState({ googleBooks: books.items }, () => console.log(this.state.googleBooks))
+                this.setState({ googleBooks: books.items })
             })
     }
 
     addBook = (book) => {
         bookService.addBook(book)
     }
-
 
     render() {
         return (

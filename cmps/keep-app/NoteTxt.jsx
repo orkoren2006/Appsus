@@ -16,7 +16,7 @@ export class NoteTxt extends React.Component {
                     {/* <span contentEditable={true} suppressContentEditableWarning={true}>
                         {this.props.note.info.txt}
                     </span> */}
-                    <ContentEditable txt={this.props.note.info.txt} onChaneItem={this.props.onChaneItem}/>
+                    <ContentEditable txt={this.props.note.info.txt} onChangeItem={this.props.onChangeItem}/>
                 </section>
                 <section className="note-btns flex space-between">
                     <img src="../../assets/img/font-icon.png" alt="" />
