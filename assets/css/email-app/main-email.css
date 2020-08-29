@@ -9,13 +9,13 @@ header{
 }
 
 nav{
-    font-size: 1.2rem;
+    font-size: 1rem;
     z-index:1;
     
 }
 
 nav a{
-    margin-left: 2rem;
+    margin-left: 1.5rem;
     text-decoration: none;
     color: #000000;
     
@@ -27,6 +27,18 @@ h1{
     z-index:1;
 }
 
+.what{
+    font-size: 2rem;
+    margin-top: -60px;
+    z-index: 1;
+    text-align: center;
+}
+
+h3{
+    color: #ffffff;
+    font-weight: 500;
+    
+}
 
 .start{
     display: flex;
@@ -40,12 +52,7 @@ h1{
     z-index:0;
 }
 
-.what{
-    font-size: 2rem;
-    margin-top: -60px;
-    z-index: 1;
-    text-align: center;
-}
+
 
 .apps-home{
     margin-top: 1rem;
@@ -254,6 +261,7 @@ h1{
      font-size: 0.9rem;
      color:#374957;
      cursor: pointer;
+     outline:none;
 
  }
  .icon-btn{
@@ -317,15 +325,13 @@ h1{
 
 
 .inbox .sender {
+   flex: 2;
     
-    flex: 2;
-    /* width: 150px; */
 }
 
 .inbox .subject {
     flex: 2;
-    /* width: 300px; */
-}
+    }
 
 .inbox .email-body {
     flex: 6;
@@ -417,16 +423,46 @@ h1{
     display: none;
 }
 
+
+
 .show {
-    background-color: palegreen;
-    width: 600px;
-    height: 600px;
+    background-color: #3B3B40;
+    border-radius: 0.5rem;
+    width: 500px;
+    height: 450px;
     position: absolute;
     right: 10px;
-    bottom: 0;
+    bottom: 5px;
     z-index:1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 0.5rem 2rem 0.5rem;
 }
 
+.x-btn{
+    color:#ffffff;
+    align-self: flex-end;
+}
+
+.add-note{
+    color:#ffffff;
+    align-self: flex-end;
+
+}
+
+.subject-input{
+    font-family: 'Roboto';
+    padding: 8px 2px;
+    border-radius: 0.5rem 0.5rem 0 0;
+    margin-bottom: 4px;
+    overflow: hidden;
+}
+
+.message-input{
+    font-family: 'Roboto';  
+    border-radius:  0 0 0.5rem 0.5rem;
+}
 
 
 @media  (max-width: 500px) {
@@ -472,12 +508,34 @@ h1{
         display:none;
     }
 
+   
+
     .compose-btn{
         margin-top: -1rem;
     }
 
-    .message-input {
-        width: 100px;
-    }
+    .show{
+        position: sticky;
+        width: 100%;
+    } 
  }
  
+ @media  (max-width: 900px) {
+    .inbox .email-body{
+        display:none;
+    }
+
+    .inbox .subject{
+        flex:4;
+    }
+}
+
+@media  (max-width: 700px) {
+    .inbox .email-body{
+        display:none;
+    }
+
+    .inbox .subject{
+        display: none;
+    }
+}
