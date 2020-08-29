@@ -24,7 +24,10 @@ nav a{
 h1{
     font-family: 'Londrina Solid';
     font-size:2.5rem;
+    z-index:1;
 }
+
+
 .start{
     display: flex;
     flex-direction: column;
@@ -40,6 +43,8 @@ h1{
 .what{
     font-size: 2rem;
     margin-top: -60px;
+    z-index: 1;
+    text-align: center;
 }
 
 .apps-home{
@@ -49,7 +54,7 @@ h1{
     justify-content: space-around;
     align-items: center;
     width: 450px;
-    margin-top:-56px;
+    /* margin-top:-56px; */
 }
 
 
@@ -423,4 +428,60 @@ li img, p {
     position: absolute;
     right: 10px;
     bottom: 0;
+    z-index:1;
 }
+
+
+
+@media  (max-width: 500px) {
+    .what{
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+    .apps-home{
+        width: 350px;}
+    h1{
+        font-size: 1.5rem;
+    }
+    nav{
+        font-size: 0.9rem;
+    }
+    nav a{
+        margin-left:0.6;
+    }
+    .screen{
+        flex-direction: column;
+    }
+    .filter-buttons {
+    
+        flex-direction: row;
+        margin: 1rem 0;
+    }
+    .sidebar{
+        max-width: none;
+        align-items: center;
+    }
+
+    .btn-container{
+        margin-left: 12px;
+    }
+    .inbox{
+        padding: 0;
+        margin-top: 1rem;
+    }
+    .inbox .email-body{
+        display:none;
+    }
+    .inbox .subject{
+        display:none;
+    }
+
+    .compose-btn{
+        margin-top: -1rem;
+    }
+
+    .message-input {
+        width: 100px;
+    }
+ }
+ 
