@@ -18,7 +18,7 @@ export class App extends React.Component {
             <Router>
                 <div>
                     <header>
-                        <h1>Lets Appsus</h1>
+                        <h1>Appsus</h1>
                         <NavBar />
                     </header>
                     <main>

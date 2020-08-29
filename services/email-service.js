@@ -14,11 +14,11 @@ export const emailService = {
 var emails;
 
 var gEmails = [
-    {id: '001', subject: 'Wassap?', body: 'Pick up!', sender: 'John Schmidt', isRead: false, isSent: false, isStarred: false, sentAt : 1551133930594},
-    {id: '002', subject: 'Don\'t miss it!', body: 'Hi there, this is your last chance to win', sender: 'Casinomania', isRead: false, isSent: false, isStarred: false, sentAt : 1552233930594},
-    {id: '003', subject: 'Big eyes', body: 'Hi, so you coveted everything and you left the flower dry', sender: 'Benni Furman', isRead: true, isSent: false, isStarred: true, sentAt : 1553333930594},
-    {id: '004', subject: 'Want to become a web-developer?', body: 'We invite you to join our incredible staff', sender: 'CodingAcademy', isRead: false, isSent: false, isStarred: false, sentAt : 1554433930594},
-    {id: '005', subject: 'Another lie is waiting for you' , body: 'Dear civilian, I want you to know that I work hard to come up with new lies every day', sender: 'B.B', isRead: true, isSent: false, isStarred: false, sentAt : 1555533930594},
+    {id: '001', subject: 'Renew your Anti-Virus now!', body: 'This is your last chance to renew your membership before you get screwed hard!', sender: 'Covid-19', isRead: false, isSent: false, isStarred: false, sentAt : "Aug 30"},
+    {id: '002', subject: 'Don\'t miss it!', body: 'Hi there, this is your last chance to win', sender: 'CasinoMania', isRead: true, isSent: false, isStarred: false, sentAt : "Aug 29"},
+    {id: '003', subject: 'שקר חדש מחכה לך' , body: 'אזרח יקר, אני רוצה שתדע שאני עושה כל מאמץ כדי להפיץ שקר חדש בכל יום', sender: 'B.B', isRead: false, isSent: false, isStarred: false, sentAt : "Aug 24"},
+    {id: '004', subject: 'Want to become a web-developer?', body: 'We invite you to join our incredible staff', sender: 'Coding Academy', isRead: true, isSent: false, isStarred: false, sentAt : "Aug 18"},
+    {id: '005', subject: 'Big eyes', body: 'Hi, so you wanted everything and you left the flower dry', sender: 'Benni Furman', isRead: false, isSent: false, isStarred: true, sentAt : "Jun 5"},
   
 ]
 

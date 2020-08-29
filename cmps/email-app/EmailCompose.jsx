@@ -17,7 +17,7 @@ export function EmailCompose(props) {
             <textarea className="message-input" onChange={(ev) => {
                 props.showBody(ev.target.value)
             }} rows="20" cols="60" name="comment" form="usrform"></textarea>
-            <button className="add-note" onClick={props.sendEmail}>Send</button>
+            <button className="send-email" onClick={props.sendEmail}>Send</button>
           
         </section>
 

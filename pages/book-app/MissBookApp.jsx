@@ -12,7 +12,7 @@ export class MissBookApp extends React.Component {
             <Router>
                 <div className="books-app-container container">
                     <header className="books-header">
-                        <h1>Lets Book</h1>
+                        <h1>SusBook</h1>
                         <NavBarBooks />
                     </header>
                     <main>

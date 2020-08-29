@@ -10,7 +10,7 @@ export function EmailPreview (props) {
             <p className="sender">{props.email.sender}</p>
             <p className="subject">{props.email.subject}</p>
             <p className="email-body">{props.email.body.substring(0, 50)}</p>
-            <p className="date">Aug 27</p>
+            <p className="date">{props.email.sentAt}</p>
             {/* <h3>{email.sentAt}</h3> */}
         </li>
         
