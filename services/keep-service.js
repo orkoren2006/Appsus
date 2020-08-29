@@ -11,7 +11,8 @@ export const keepService = {
     removeTodo,
     toggleTodo,
     setNoteColor,
-    addTodo
+    addTodo,
+    editNote
 }
 
 var notes;
@@ -124,7 +125,6 @@ function addNote(note) {
                             id: utilService.makeId(),
                             isDone: false
                         },
-
                     ],
                 },
                 style: {
@@ -134,7 +134,7 @@ function addNote(note) {
             break;
         default: break;
     }
-    // debugger
+
     newNote['id'] = noteId;
     notes.push(newNote)
     storageService.saveToStorage(NOTES_KEY, notes)
@@ -176,4 +176,29 @@ function addTodo(noteToEdit,txt){
     let noteToEditIdx = notes.findIndex(note => noteToEdit.id === note.id)
     notes[noteToEditIdx].info.todos.push(newTodo)
     storageService.saveToStorage(NOTES_KEY, notes)
+}
+
+function editNote(content,noteType,noteId){
+    console.log(content,noteType,noteId);
+    const noteIdx = notes.findIndex(note => {return note.id === noteId})
+
+    let field;
+    switch (noteType) {
+        case 'NoteTxt':
+            field = 'txt';
+            break;
+        case 'NoteImg':
+            field = 'title';
+            break;
+        case 'NoteVideo':
+            field = 'title';
+            break;
+        case 'NoteTodos':
+            field = 'label';
+            break;
+        default: break;
+    }
+
+    notes[noteIdx].info[field] = content;
+    storageService.saveToStorage(NOTES_KEY,notes)
 }

@@ -27,10 +27,6 @@
     grid-auto-flow: dense;
 }
 
-/* .note-list li * {
-    margin: 0;
-} */
-
 .note-list li{
     padding: 5px;
     height: 100%;
@@ -40,7 +36,7 @@
     cursor: pointer;
 }
 
-.text-note, .img-note{
+.text-note, .img-note, .todos-note{
     padding: 10px;
     border-radius: 10px;
 }

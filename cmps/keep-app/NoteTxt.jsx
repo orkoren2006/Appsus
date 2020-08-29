@@ -6,7 +6,8 @@ export class NoteTxt extends React.Component {
         style: {
             backgroundColor: this.props.note.style.bcg,
         },
-        content: this.props.contentEditable
+        content: this.props.contentEditable,
+        noteId: this.props.note.id
     }
 
     render() {
@@ -14,14 +15,14 @@ export class NoteTxt extends React.Component {
         return (
             <section className="text-note flex-col space-between" style={{ backgroundColor: bcg }}>
                 <section className="note-title">
-                    <div className="editable-content"
+                    <div data-noteid={this.props.note.id} className="editable-content"
                         contentEditable={true} suppressContentEditableWarning={true}
-                        onBlur={(ev) => this.props.onBlurContent(ev.target.innerHTML)}>
-                            {this.state.content}</div>
+                        onBlur={(ev) => this.props.onBlurContent(ev, this.props.note.type,this.props.note.id)}>
+                            {this.props.note.info.txt}</div>
                 </section>
                 <section className="note-btns flex space-between">
                     <img src="../../assets/img/font-icon.png" alt="" />
-                    <input type="color" id="bcg-color" name="color" value={bcg} onChange={(ev) => this.props.onColorChange(ev, this.props.note)} />
+                    <input type="color" id="bcg-color" name="color" height="25px" value={bcg} onChange={(ev) => this.props.onColorChange(ev, this.props.note)} />
                     <button name="btn" className="remove-btn" onClick={() => { this.props.onRemoveNoteBtn(this.props.note) }}>X</button>
                 </section>
             </section>

@@ -13,8 +13,6 @@ export class MissKeepApp extends React.Component {
             opacity: [1, 0.3, 0.3, 0.3]
         },
         noteToEdit: null,
-        editableContent: 'my content',
-        isEditable: true
     }
 
     componentDidMount() {
@@ -72,15 +70,28 @@ export class MissKeepApp extends React.Component {
         }
     }
 
-    addTodo = () => {
-        if (!this.state.newNote.id) {
-            let note = keepService.addNote(this.state.newNote);
+    addTodo = (note) => {
+        const noteToEdit = (note.id) ? note:this.state.newNote;
+        const content = (note.id) ? 'Enter Todo':this.state.newNote.moreContent
+        
+        if (!noteToEdit.id) {
+            let note = keepService.addNote(note);
             this.loadNote()
             this.setState({ newNote: note })
         } else {
-            keepService.addTodo(this.state.newNote, this.state.newNote.moreContent)
+            keepService.addTodo(noteToEdit, content)
             this.loadNote()
-        }
+        } 
+        // if (!this.state.newNote.id) {
+        //     let note = keepService.addNote(this.state.newNote);
+        //     this.loadNote()
+        //     this.setState({ newNote: note })
+        // } else if (this.state.newNote.id){
+        //     const note = (note.id) ? note:this.state.newNote;
+        //     const content = (note.id) ? 'Enter Todo':this.state.newNote.moreContent
+        //     keepService.addTodo(this.state.newNote, this.state.newNote.moreContent)
+        //     this.loadNote()
+        // } 
 
     }
 
@@ -105,13 +116,14 @@ export class MissKeepApp extends React.Component {
         this.setState({ newNote: { ...this.state.newNote, type: newNoteType }, style: { opacity: opacityArr } })
     }
 
-    todoClicked = (todos, todoId) => {
+
+    // specific todo clicked - mark as done
+    markTodo = (todos, todoId) => {
         keepService.toggleTodo(todos, todoId)
         this.loadNote()
     }
 
     listItemClicked = (ev, note) => {
-        console.log(ev.target);
         // if (ev.target.type === 'color' || ev.target.name === 'btn') return
         // this.setState({ noteToEdit: [note] })
     }
@@ -121,25 +133,12 @@ export class MissKeepApp extends React.Component {
         this.loadNote()
     }
 
-    closeModal = () => {
-        this.setState({ noteToEdit: null })
-    }
-
-    focusContent = (ev) => {
-        console.log('focus',ev.type);
-        // this.setState({editableContent: 'itay'})
-        this.setState({isEditable: true})
-    }
-
-    blurContent = (content) => {
+    blurContent = (ev,noteType,noteId) => {
         // send to db
-        console.log(content);
-        this.setState({isEditable: false})
-    }
-
-    contentEditableChange = (ev) => {
-        console.log(ev.target.innerText);
-        this.setState({ editableContent: ev.target.innerText})
+        const newContent = ev.target.innerText;
+        // const noteId = ev.target.dataset.noteid;
+        keepService.editNote(newContent,noteType,noteId);
+        this.loadNote()
     }
 
 
@@ -148,9 +147,8 @@ export class MissKeepApp extends React.Component {
 
         if (!notesToShow) return <p>loading..</p>
         return (
-            <section className="notes" >
-                
-                {/* <h1>I'm your KEEP app</h1> */}
+            <section className="notes" >       
+                <h1>I'm your KEEP app</h1>
                 <section className="new-note-container container">
                     <ul className="new-note-type-list clean-list flex align-center center-content">
                         <input className="new-note-input" type="text"
@@ -189,19 +187,13 @@ export class MissKeepApp extends React.Component {
                     onRemoveNoteBtn={this.removeNote}
                     onItemClick={this.listItemClicked}
                     onChangeColor={this.noteColorChanged}
-                    onTodoClick={this.todoClicked}
-
-                    onChangeContent={this.contentEditableChange}
-                    onFocusContent={this.focusContent}
                     onBlurContent={this.blurContent}
                     contentEditable={this.state.editableContent}
-                    isEditable={this.state.isEditable}
+                    
+                    onMarkTodo={this.markTodo}
+                    onAddTodoBtn={this.addTodo}
+
                 />
-                {/* {this.state.noteToEdit && <Modal onCloseModal={this.closeModal}>
-                    <NoteEdit notes={this.state.noteToEdit} />
-                    <NoteList notes={this.state.noteToEdit}
-                        onChanedItem={this.onNewNoteTxt} />
-                </Modal>} */}
             </section>
         )
     }

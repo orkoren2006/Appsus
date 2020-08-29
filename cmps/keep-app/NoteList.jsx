@@ -24,13 +24,13 @@ export function NoteList(props) {
                     onChangeItem={props.onChangeItem}
                     onColorChange={props.onChangeColor}
                     onRemoveNoteBtn={props.onRemoveNoteBtn}
-                    onTodoClick={props.onTodoClick}
-
-                    onChangeContent={props.onChangeContent}
-                    onFocusContent={props.onFocusContent}
                     onBlurContent={props.onBlurContent}
                     contentEditable={props.contentEditable}
-                    isEditable={props.isEditable}
+
+
+                    onMarkTodo={props.onMarkTodo}
+                    onAddTodoBtn={props.onAddTodoBtn}
+
                 />
             </li>
         })}
