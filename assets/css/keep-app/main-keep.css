@@ -56,11 +56,14 @@
     outline: none;
 }
 
-
 .note-img{
     height: 100%;
     width: 100%;
     grid-row: span 3;
+}
+
+.editable-content{
+    margin: 10px auto;
 }
 
 

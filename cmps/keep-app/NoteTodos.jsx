@@ -42,7 +42,7 @@ export class NoteTodos extends React.Component {
                                             return;
                                         }
                                     }}>
-                                    {todo.txt}</li>
+                                    {todo.txt || 'Enter Title..'}</li>
                             </section>
                             <button className="remove-todo-btn"
                                 onClick={() => { this.props.onRemoveNoteBtn(this.props.note, this.props.note.info.todos[idx].id) }}>

@@ -23,7 +23,7 @@ export class BookAdd extends React.Component {
         return (
             <div className="book-add-container">
                 <section className="book-search flex-col align-center">
-                    <h3>Find and Save Books from GoogleBooks</h3>
+                    <h3>Find and Save Books from BooksSus</h3>
                     <input className="add-book-input" type="text" name="title"
                         placeholder="Enter book's name"
                         autoComplete="off"
