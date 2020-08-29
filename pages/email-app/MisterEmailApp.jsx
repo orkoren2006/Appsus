@@ -135,14 +135,18 @@ export class MisterEmailApp extends React.Component {
         return (
             <section className="email-main">
                 <div className="header">
-                    <h1>I'm your EMAIL app</h1>
+                    <h1></h1>
                 </div>
 
                 <div className="screen">
                     <div className="sidebar">
-                        <button className="compose" onClick={this.openCompose}>+ Compose</button>
+                        <div className="compose-btn"> 
+                        <img  src="../../assets/img/plus_icon.png"/>    
+                        <button className="compose" onClick={this.openCompose}>Compose</button>
+                        </div>
                         <EmailFilter onReadFilter={this.toggleReadFilter} onSentFilter={this.toggleSentFilter} onStarredFilter={this.toggleStarredFilter}
                             onInbox={this.filterInbox} />
+                        
                     </div>
                     <EmailList emails={emails} onRemoveEmail={this.removeEmail} onStarredEmail={this.starEmail} onReadEmail={this.readEmail} />
                 </div>

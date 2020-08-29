@@ -1,20 +1,48 @@
+header{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 100px;
+}
+.start{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.gif-home{
+    width: 500px;
+}
+
+.what{
+    margin-top: -80px;
+}
+
 /* Email comp */
 .email-main {
     display: flex;
     flex-direction: column;
 }
 
-.email-main .compose {
+.compose-btn{
+    display: flex;
     
+    justify-content: center;
     margin-bottom: 1rem;
     border-radius: 2rem;
-    padding: 1rem;
-    font-size: 1rem;
-    font-weight: 600;
+    padding: 0.7rem 1.2rem;
     border: 1px solid rgb(187, 187, 187);
-    color:#374957;
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
     background-color: #ffffff;
+}
+
+.email-main .compose {
+    margin-top: -0.5rem;
+    
+    font-size: 1rem;
+    font-weight: 600;   
+    color:#374957;    
     text-align: center;
 }
 
