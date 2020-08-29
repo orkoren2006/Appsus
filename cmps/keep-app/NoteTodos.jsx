@@ -3,7 +3,7 @@ export class NoteTodos extends React.Component {
 
     state = {
         style: {
-            backgroundColor: 'red',
+            backgroundColor: '#00A4AA',
         },
         isEditable: false
     }

@@ -20,7 +20,7 @@
 /* NOTE LIST */
 
 .note-list {
-    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
     grid-template-rows: repeat(auto-fit, minmax(50px,1fr));
     /* grid-auto-rows: minmax(100px,1fr); */
     grid-gap: 10px;
@@ -36,9 +36,26 @@
     cursor: pointer;
 }
 
-.text-note, .img-note, .todos-note{
+.img-note {
     padding: 10px;
     border-radius: 10px;
+    border-radius:  0 1rem 0 1rem;
+    box-shadow: 4px 4px 8px 0px rgba(0,0,0,0.4);
+    min-height: 180px;
+    color: #ffffff;
+}
+
+.remove-btn{
+    padding-top: 0;
+}
+
+.text-note, .todos-note{
+    box-shadow: 4px 4px 8px 0px rgba(0,0,0,0.4);
+    min-height: 180px;
+    color: #ffffff;
+    padding: 1.5rem;
+    border-radius:  0 1rem 0 1rem;
+    
 }
 
 .NoteImg{
@@ -63,7 +80,15 @@
 }
 
 .editable-content{
-    margin: 10px auto;
+    font-size: 1rem;
+    font-weight: 500;
+    padding-bottom: 1rem;
+    /* margin: 10px auto; */
+}
+
+ul{
+    margin: 0;
+    padding: 1rem;
 }
 
 

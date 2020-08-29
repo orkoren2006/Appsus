@@ -20,13 +20,15 @@ export class NoteTxt extends React.Component {
                         onBlur={(ev) => this.props.onBlurContent(ev, this.props.note.type, this.props.note.id)}>
                         {this.props.note.info.txt || 'Enter Text..'}</div>
                 </section>
-                <section className="note-btns flex space-between">
-                    <img src="../../assets/img/font-icon.png" alt="" />
+                <section className="note-btns flex space-evenly">
+                    
+                    <img src="../../assets/img/font.png" height= "16px" alt="" />
                     <input type="color" id="bcg-color" name="color" height="25px" value={bcg} 
                     onChange={(ev) => this.props.onColorChange(ev, this.props.note)} />
                     <button name="btn" className="remove-btn" onClick={() => { this.props.onRemoveNoteBtn(this.props.note) }}>
                         <img src="../../assets/img/delete.png" alt="" />
                     </button>
+                    
                 </section>
             </section>
         )

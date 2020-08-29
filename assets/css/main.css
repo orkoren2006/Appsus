@@ -48,6 +48,12 @@ body {
     justify-content: center;
 }
 
+.start-content {
+    justify-content: flex-start;
+}
+.space-evenly{
+    justify-content: space-evenly;
+}
 .space-between {
     justify-content: space-between;
 }

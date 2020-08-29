@@ -133,9 +133,9 @@ export class MissKeepApp extends React.Component {
         if (!notesToShow) return <p>loading..</p>
         return (
             <section className="notes" >
-                <h1>I'm your KEEP app</h1>
+                
                 <section className="new-note-container container">
-                    <ul className="new-note-type-list clean-list flex align-center center-content">
+                    <ul className="new-note-type-list clean-list flex align-center start-content">
                         <input className="new-note-input" type="text"
                             placeholder={this.getPlaceholderTxt()}
                             value={this.state.newNote.inputContent}
@@ -145,7 +145,7 @@ export class MissKeepApp extends React.Component {
                                 <img data-type="NoteTxt" onClick={this.onNoteType}
                                     style={{ opacity: this.state.style.opacity[0] }}
                                     src="../../assets/img/font-icon.png" alt="" /></li>
-                            <li className="img-note" >
+                            <li className="img-note-btn" >
                                 <img data-type="NoteImg" onClick={this.onNoteType}
                                     style={{ opacity: this.state.style.opacity[1] }}
                                     src="../../assets/img/picture-icon.png" alt="" /></li>
