@@ -19,6 +19,76 @@ header{
     margin-top: -80px;
 }
 
+.app-btn {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    
+    
+    position: relative;
+    text-decoration: none;
+    
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+  }
+  .app-btn:hover {
+    text-decoration: none;
+  }
+
+  .effect04 {
+
+    color: #ffffff;
+    background-color: lightblue;
+    outline: solid  2px lightblue;
+    
+    transition-duration: 0.4s;
+    overflow: hidden;
+  }
+  
+  .effect04::before,
+  .effect04 span{
+      margin: 0 auto;
+      transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+      transition-duration: 0.4s;
+  }
+
+  .effect04:hover{
+
+    background-color: #ffffff;
+  }
+  
+ 
+  .effect04:hover span{
+    -webkit-transform: translateY(-400%) scale(-0.1,20);
+            transform: translateY(-400%) scale(-0.1,20);
+  }
+  
+  
+  .effect04::before{
+    content: url('../../img/send.png');
+    
+    color: #FFF;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    margin: auto;
+    -webkit-transform: translateY(500%) scale(-0.1,20);
+            transform: translateY(500%) scale(-0.1,20);
+  }
+  
+  
+  .effect04:hover::before{
+    letter-spacing: 0.05em;
+    -webkit-transform: translateY(0) scale(1,1);
+            transform: translateY(0) scale(1,1);
+  }
+  
+
 /* Email comp */
 .email-main {
     display: flex;
