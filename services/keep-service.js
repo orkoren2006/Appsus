@@ -51,7 +51,7 @@ function addNote(note) {
                     txt: note.inputContent
                 },
                 style: {
-                    bcg: '#FF0000'
+                    bcg: '#FEB72B'
                 }
             }
             break;
@@ -63,7 +63,7 @@ function addNote(note) {
                     title: note.moreContent
                 },
                 style: {
-                    bcg: '#FF0000'
+                    bcg: '#ffa372'
                 }
             }
             break;
@@ -75,7 +75,7 @@ function addNote(note) {
                     title: note.moreContent
                 },
                 style: {
-                    bcg: '#FF0000'
+                    bcg: '#557571'
                 }
             }
             break;
@@ -83,7 +83,7 @@ function addNote(note) {
             newNote = {
                 type: "NoteTodos",
                 info: {
-                    color: '#FF0000',
+                    color: '#40a8c4',
                     label: note.inputContent,
                     todos: [
                         {
@@ -95,7 +95,7 @@ function addNote(note) {
                     ],
                 },
                 style: {
-                    backgroundColor: '#FF0000'
+                    backgroundColor: '#40a8c4'
                 }
             }
             break;

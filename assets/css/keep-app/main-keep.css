@@ -3,18 +3,27 @@
 /* ADD NOTE BAR */
 
 .new-note-type-list *{
-    padding: 10px;
+    padding: 6px;
     margin: 5px;
 }
 
 /* NEW NOTE INPUT */
 .new-note-input {
-    min-width: 200px;
+    min-width: 250px;
+    border-radius: 1.5rem;
+    padding: 0.9rem 0.5rem;
+    border: solid grey 1px;
 }
+
+
 
 /* EXTANDED NOTE INPUT */
 .more-content-input {
-    margin: 5px auto;
+    margin: 5px;
+    min-width: 250px;
+    border-radius: 1.5rem;
+    padding: 0.9rem 0.5rem;
+    border: solid grey 1px;
 }
 
 /* NOTE LIST */
@@ -25,6 +34,7 @@
     /* grid-auto-rows: minmax(100px,1fr); */
     grid-gap: 10px;
     grid-auto-flow: dense;
+    margin-top: 2rem;
 }
 
 .note-list li{
@@ -45,8 +55,40 @@
     color: #ffffff;
 }
 
+li.txt-note{
+    background-color: #FEB72B;
+    border-radius: 50%;
+}
+
+li.img-note-btn{
+    background-color: #ffa372;
+    border-radius: 50%;
+}
+
+li.video-note{
+    background-color: #557571;
+    border-radius: 50%;
+}
+
+li.todo-note{
+    background-color: #40a8c4;
+    border-radius: 50%;
+}
+
+.add-note{
+    color: #000000;
+    
+}
+
+.remove-btn-todo{
+    padding: 16px 4px 0px 0px;
+}
+
+.edit-note-btn{
+    padding:0;
+}
 .remove-btn{
-    padding-top: 0;
+    padding: 0;
 }
 
 .text-note, .todos-note{
@@ -73,6 +115,9 @@
     outline: none;
 }
 
+.remove-todo-btn{
+    color: #ffffff;
+}
 .note-img{
     height: 100%;
     width: 100%;
@@ -86,9 +131,16 @@
     /* margin: 10px auto; */
 }
 
+#bcg-color.color-picker{
+    border-radius: 50%;
+    border-width: 0.5px;
+    width: 20px;
+    height: 20px;
+}
+
 ul{
     margin: 0;
-    padding: 1rem;
+    padding: 0;
 }
 
 

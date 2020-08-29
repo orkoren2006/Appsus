@@ -19,9 +19,12 @@ export class NoteImgVid extends React.Component {
                         {this.props.note.info.title || 'Enter Title..'}</div>
                 </section>
                 <section className="note-btns flex space-between">
-                    <input type="color" id="bcg-color" name="color" value={bcg} onChange={(ev) => this.props.onColorChange(ev, this.props.note)} />
+                    <label for="bcg-color">
+                    <img src="../../assets/img/palette.png" alt="" />
+                    </label>
+                    <input type="color" id="bcg-color" name="color" value={bcg} onChange={(ev) => this.props.onColorChange(ev, this.props.note)} hidden/>
                     <button className="remove-btn" onClick={() => { this.props.onRemoveNoteBtn(this.props.note) }}>
-                        <img src="../../assets/img/delete.png" alt="" />
+                        <img src="../../assets/img/delete-white.png" alt="" />
                     </button>
                 </section>
             </section>

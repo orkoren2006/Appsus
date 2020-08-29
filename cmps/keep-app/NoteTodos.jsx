@@ -3,7 +3,7 @@ export class NoteTodos extends React.Component {
 
     state = {
         style: {
-            backgroundColor: '#00A4AA',
+            backgroundColor: '#40a8c4',
         },
         isEditable: false
     }
@@ -52,8 +52,8 @@ export class NoteTodos extends React.Component {
                 })}
                 <section className="note-btns flex space-between">
                     <button className="add-todo-btn" onClick={() => { this.props.onAddTodoBtn(this.props.note) }}>+</button>
-                    <button className="remove-btn" onClick={() => { this.props.onRemoveNoteBtn(this.props.note) }}>
-                        <img src="../../assets/img/delete.png" alt="" />
+                    <button className="remove-btn-todo" onClick={() => { this.props.onRemoveNoteBtn(this.props.note) }}>
+                        <img src="../../assets/img/delete-white.png" alt="" />
                     </button>
                 </section>
             </section>

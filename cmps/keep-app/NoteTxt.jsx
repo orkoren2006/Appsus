@@ -22,11 +22,14 @@ export class NoteTxt extends React.Component {
                 </section>
                 <section className="note-btns flex space-evenly">
                     
-                    <img src="../../assets/img/font.png" height= "16px" alt="" />
+                    <img src="../../assets/img/font.png" height ="16px" alt="" />
+                    <label for="bcg-color">
+                    <img src="../../assets/img/palette.png" alt="" />
+                    </label>
                     <input type="color" id="bcg-color" name="color" height="25px" value={bcg} 
-                    onChange={(ev) => this.props.onColorChange(ev, this.props.note)} />
+                    onChange={(ev) => this.props.onColorChange(ev, this.props.note)} hidden/>
                     <button name="btn" className="remove-btn" onClick={() => { this.props.onRemoveNoteBtn(this.props.note) }}>
-                        <img src="../../assets/img/delete.png" alt="" />
+                        <img src="../../assets/img/delete-white.png" alt="" />
                     </button>
                     
                 </section>
