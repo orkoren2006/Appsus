@@ -22,8 +22,13 @@ export class BookAdd extends React.Component {
     render() {
         return (
             <div className="book-add-container">
-                <h3>Find and Save Books from GoogleBooks</h3>
-                <input type="text" name="title" placeholder="Enter book's name" onChange={this.getGoogleBooks} />
+                <section className="book-search flex-col align-center">
+                    <h3>Find and Save Books from GoogleBooks</h3>
+                    <input className="add-book-input" type="text" name="title"
+                        placeholder="Enter book's name"
+                        autoComplete="off"
+                        onChange={this.getGoogleBooks} />
+                </section>
                 {this.state.googleBooks &&
                     <BookList books={this.state.googleBooks}
                         listToRender="googleBooks"

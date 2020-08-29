@@ -501,7 +501,6 @@ function getGooglsBookByTitle(title) {
 }
 
 function addBook(book) {
-  console.log(book);
   var isOnSale = (book.saleInfo.saleability === 'FOR_SALE') ? true:false;
   const bookToAdd = {
     "id": book.id,

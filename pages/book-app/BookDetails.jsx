@@ -16,7 +16,7 @@ export class BookDetails extends React.Component {
         bookService.query()
             .then(books => bookService.getBookById(books, bookId)
                 .then(book => this.setState({ book })))
-        
+
         // bookService.getBookById(bookId)
         //     .then(book => this.setState({ book }))
     }
@@ -51,7 +51,7 @@ export class BookDetails extends React.Component {
 
     getClass = () => {
         const bookPrice = this.state.book.listPrice.amount;
-        var bookClass = "book-details-container flex";
+        let bookClass = "book-price";
         if (bookPrice > 150) { bookClass += ' expensive' }
         else if (bookPrice < 40) { bookClass += ' cheap' } // in the instruction should be 20 but only one book fullfills it.
 
@@ -80,29 +80,44 @@ export class BookDetails extends React.Component {
         const bookDescriptionLen = book.description.length;
         const price = utilService.getPrice(book.listPrice.amount, book.listPrice.currencyCode)
 
-        return (<section className={this.getClass()}>
-            <div className="image">
-                <img src={book.thumbnail} alt="" />
-            </div>
-            <div className="book-info flex-col">
-                <h1>Title: {book.title}</h1>
-                <h2>Price: {price}</h2>
-                <section className="authors">
-                    Authors: {bookAuthors.map((author, idx) => <span key={idx}>{author}</span>)}
+        return (
+            <section className="all-details">
+                <section className="book-details-container flex">
+                    <div className="image">
+                        <img src={book.thumbnail} alt="" />
+                    </div>
+                    <div className="book-info flex-col">
+                        <h1>Title: {book.title}</h1>
+                        <h2 className={this.getClass()}>Price: {price}</h2>
+                        <section className="authors">
+                            Authors: {bookAuthors.map((author, idx) => <span key={idx}>{author}</span>)}
+                        </section>
+                        <h5>Number Of Pages: {book.pageCount} {this.pageCountMsg}</h5>
+                        <h5>Published At:{yearOfPublication} {this.publicationAtMsg}</h5>
+                        {book.listPrice.isOnSale && <h1>FOR SALE!!</h1>}
+                        {bookDescriptionLen > 100 && <LongTxt text={book.description} />}
+                        {bookDescriptionLen < 100 && <p>{book.description}</p>}
+                    </div>
+                    <section className="book-review flex-col">
+                        <h3 className="flex center-content">Add Review</h3>
+                        <ReviewAdd onAddReview={this.addReview} onInputChange={this.updateReview} review={this.state.review} />
+                        <Link to="/book/gallery"><button className="back-to-gallery-btn" onClick={this.onBackToGallery}>Back To Gallery</button></Link>
+                    </section>
                 </section>
-                <h5>Number Of Pages: {book.pageCount} {this.pageCountMsg}</h5>
-                <h5>Published At:{yearOfPublication} {this.publicationAtMsg}</h5>
-                {book.listPrice.isOnSale && <h1>FOR SALE!!</h1>}
-                {bookDescriptionLen > 100 && <LongTxt text={book.description} />}
-                {bookDescriptionLen < 100 && <p>{book.description}</p>}
-            </div>
-            <section className="book-review flex-col">
-                <h3 className="flex center-content">Add Review</h3>
-                <ReviewAdd onAddReview={this.addReview} onInputChange={this.updateReview} review={this.state.review} />
-                <Link to="/book/gallery"><button className="back-to-gallery-btn" onClick={this.onBackToGallery}>Back To Gallery</button></Link>
+                <section className="reviews-list container">
+                    {book.review.map(review => {
+                        return (
+                            <section className="reivew flex">
+                                {/* {name: "itay avrahami", rate: "3", read-date: "2020-06-09", free-text: "cool"} */}
+                                <span className="review-writer">Name: {review.name}</span>
+                                <span className="review-date">Date: {review['read-date']}</span>
+                                <span className="review-rate">Rate: {review.rate}</span>
+                                <span className="review-content">{review['free-text']}</span>
+                            </section>
+                        )
+                    })}
+                </section>
             </section>
-        </section>
         )
     }
-
 }

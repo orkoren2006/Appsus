@@ -16,7 +16,7 @@
     margin: 5px;
 }
 
-/* book-GALLERY */
+/* BOOK-GALLERY */
 
 /* HEADER */
 
@@ -36,7 +36,7 @@
     margin: 0px 5px;
 }
 
-.book-list a{
+.book-list a, .book-list-google-list a{
     text-decoration: none;
     color: black;
 }
@@ -46,6 +46,15 @@
 }
 
 /* BOOK DETAILS */
+
+.book-details-container{
+    margin-block-end: 20px;
+}
+
+.book-price{
+    padding: 10px;
+    border-radius: 10px;
+}
 
 .book-info{
     margin: 0px 15px;
@@ -57,5 +66,36 @@
 
 .book-review *:not(:last-child) {
     margin-block-end: 10px;
+}
 
+
+
+/* BOOK-ADD */
+
+.add-book-input{
+    width: 60%;
+    border-radius: 100px;
+    padding: 5px;
+    outline: none;
+}
+
+.book-list-google-list li{
+    padding: 5px;
+    margin: 5px;
+}
+
+.book-list-google-list li:hover{
+    background-color: rgb(233, 233, 233);
+    cursor: pointer;
+}
+
+/* HELPEAR */
+
+.expensive {
+    background-color: rgb(131, 17, 17);
+    color: white
+}
+
+.cheap {
+    background-color: green;
 }
