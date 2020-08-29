@@ -3,7 +3,27 @@ header{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 0 100px;
+    margin: 0 1rem;
+    z-index:1;
+    
+}
+
+nav{
+    font-size: 1.2rem;
+    z-index:1;
+    
+}
+
+nav a{
+    margin-left: 2rem;
+    text-decoration: none;
+    color: #000000;
+    
+}
+
+h1{
+    font-family: 'Londrina Solid';
+    font-size:2.5rem;
 }
 .start{
     display: flex;
@@ -13,39 +33,53 @@ header{
 }
 .gif-home{
     width: 500px;
+    margin-top: -56px;
+    z-index:0;
 }
 
 .what{
-    margin-top: -80px;
+    font-size: 2rem;
+    margin-top: -60px;
 }
+
+.apps-home{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 450px;
+    margin-top:-56px;
+}
+
 
 .app-btn {
     display:flex;
     justify-content: center;
     align-items: center;
-    letter-spacing: 0.1em;
     cursor: pointer;
-    font-size: 14px;
-    font-weight: 400;
-    
-    
+    font-size: 1rem;
+    font-weight: 500;
     position: relative;
-    text-decoration: none;
     
+    text-decoration: none;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 95px;
+    height: 95px;
+    text-align: center;
+    line-height: 24px;
+    
+    
   }
   .app-btn:hover {
     text-decoration: none;
   }
 
   .effect04 {
-
-    color: #ffffff;
-    background-color: lightblue;
-    outline: solid  2px lightblue;
+    color:#ffffff;
+    background: #04458F;
     
+    border-radius: 50%;
     transition-duration: 0.4s;
     overflow: hidden;
   }
@@ -58,8 +92,8 @@ header{
   }
 
   .effect04:hover{
-
     background-color: #ffffff;
+    border: solid  3px #04458F;
   }
   
  
@@ -70,24 +104,105 @@ header{
   
   
   .effect04::before{
-    content: url('../../img/send.png');
-    
-    color: #FFF;
+    content: url('../../img/mail_blue.png');
+    opacity: 0;
     position: absolute;
-    left: 50%;
-    right: 50%;
     margin: auto;
     -webkit-transform: translateY(500%) scale(-0.1,20);
             transform: translateY(500%) scale(-0.1,20);
   }
   
-  
   .effect04:hover::before{
-    letter-spacing: 0.05em;
+    opacity: 1;
     -webkit-transform: translateY(0) scale(1,1);
             transform: translateY(0) scale(1,1);
   }
   
+  .effect05 {
+    color:#ffffff;
+    background-color: #00AF80;
+    
+    border-radius: 50%;
+    transition-duration: 0.4s;
+    overflow: hidden;
+  }
+  
+  .effect05::before,
+  .effect05 span{
+      margin: 0 auto;
+      transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+      transition-duration: 0.4s;
+  }
+
+  .effect05:hover{
+    background-color: #ffffff;
+    border: solid 3px #00AF80;
+  }
+  
+ 
+  .effect05:hover span{
+    -webkit-transform: translateY(-400%) scale(-0.1,20);
+            transform: translateY(-400%) scale(-0.1,20);
+  }
+  
+  
+  .effect05::before{
+    content: url('../../img/book_green.png');
+    opacity: 0;
+    position: absolute;
+    margin: auto;
+    -webkit-transform: translateY(500%) scale(-0.1,20);
+            transform: translateY(500%) scale(-0.1,20);
+  }
+  
+  .effect05:hover::before{
+    opacity: 1;
+    -webkit-transform: translateY(0) scale(1,1);
+            transform: translateY(0) scale(1,1);
+  }
+
+  .effect06 {
+    color:#ffffff;
+    background-color: #FFB229;
+    
+    border-radius: 50%;
+    transition-duration: 0.4s;
+    overflow: hidden;
+  }
+  
+  .effect06::before,
+  .effect06 span{
+      margin: 0 auto;
+      transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+      transition-duration: 0.4s;
+  }
+
+  .effect06:hover{
+    background-color: #ffffff;
+    border: solid 3px #FFB229;
+  }
+  
+ 
+  .effect06:hover span{
+    -webkit-transform: translateY(-400%) scale(-0.1,20);
+            transform: translateY(-400%) scale(-0.1,20);
+  }
+  
+  
+  .effect06::before{
+    content: url('../../img/note_orange.png');
+    opacity: 0;
+    position: absolute;
+    margin: auto;
+    -webkit-transform: translateY(500%) scale(-0.1,20);
+            transform: translateY(500%) scale(-0.1,20);
+  }
+  
+  .effect06:hover::before{
+    opacity: 1;
+    -webkit-transform: translateY(0) scale(1,1);
+            transform: translateY(0) scale(1,1);
+  }
 
 /* Email comp */
 .email-main {
@@ -121,6 +236,9 @@ header{
     display: flex;
     color: #202124;
     margin-top: 1rem;
+    
+    /* border-top: solid 1px #374957; */
+
   
 }
  button {
@@ -148,13 +266,14 @@ header{
 .email-list {
     flex: 4;
     
-    margin-top: -1rem;
+    
 }
 
 .sidebar {
     display: flex;
     flex-direction: column;
     flex: 1;
+    margin-top:1rem;
     max-width: 200px;
     
 }

@@ -4,10 +4,10 @@ export function NavBar(props) {
     
     return (
         <nav>
-            <NavLink to="/">Home</NavLink>|
-            <NavLink to="/email">Email</NavLink>|
-            <NavLink to="/book">Books</NavLink>|
-            <NavLink to="/keep">Notes</NavLink>|
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/email">Email</NavLink>
+            <NavLink to="/book">Books</NavLink>
+            <NavLink to="/keep">Notes</NavLink>
         </nav>
     )
 }

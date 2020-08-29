@@ -10,12 +10,13 @@ export class Home extends React.Component {
                 {/* <h2>Appsus Sweet Appsus</h2> */}
                 <div className="start">
                     <img className="gif-home" src="../assets/img/hello_gif.gif" />
-                    <h2 className="what">What do you want to do today?</h2>
+                    <h2 className="what"> What do you want to do today?</h2>
+                
+                    <div className="apps-home">
+                    <button className="app-btn effect04" name="email" onClick={this.navigateTo}> Check<br></br> mail </button>
+                    <button className="app-btn effect05" name="book" onClick={this.navigateTo}> Search books </button>
+                    <button className="app-btn effect06" name="keep" onClick={this.navigateTo}> Write a <br></br> note </button>
                 </div>
-                <div className="apps-home">
-                    <button className="app-btn-mail" name="email" onClick={this.navigateTo}> Check Mail </button>
-                    <button className="app-btn-books" name="book" onClick={this.navigateTo}> Search books </button>
-                    <button className="app-btn-nots" name="keep" onClick={this.navigateTo}> Write some notes </button>
                 </div>
 
 
