@@ -104,7 +104,7 @@ export class BookDetails extends React.Component {
                         <Link to="/book/gallery"><button className="back-to-gallery-btn" onClick={this.onBackToGallery}>Back To Gallery</button></Link>
                     </section>
                 </section>
-                <section className="reviews-list container">
+                 {(book.review) && <section className="reviews-list container">
                     <h3>Readers Reviews</h3>
                     {book.review.map(review => {
                         return (
@@ -117,6 +117,7 @@ export class BookDetails extends React.Component {
                         )
                     })}
                 </section>
+                }
             </section>
         )
     }

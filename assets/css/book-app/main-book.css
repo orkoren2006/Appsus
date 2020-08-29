@@ -80,8 +80,6 @@
     margin-inline-start: 25px;
 }
 
-
-
 /* BOOK-ADD */
 
 .add-book-input{
@@ -91,6 +89,9 @@
     outline: none;
 }
 
+.book-list-google-list{
+    box-shadow: 0 0 4px black;
+}
 .book-list-google-list li{
     padding: 5px;
     margin: 5px;
