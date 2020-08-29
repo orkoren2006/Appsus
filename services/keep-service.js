@@ -148,11 +148,10 @@ function addTodo(noteToEdit, txt) {
 function editNote(content, noteType, noteId, todoId) {
 
     const noteIdx = notes.findIndex(note => { return note.id === noteId })
-    // debugger
     let field;
     let todoIdx;
     switch (noteType) {
-        case 'NoteTxt':
+        case 'NoteText':
             field = 'txt';
             break;
         case 'NoteImg':

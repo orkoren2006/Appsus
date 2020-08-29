@@ -56,7 +56,7 @@ export class MissKeepApp extends React.Component {
             case 'NoteVideo':
                 return 'Enter Video URL...'
             case 'NoteTodos':
-                return 'Enter Todo...'
+                return 'Enter Note Title...'
         }
     }
 
@@ -64,7 +64,7 @@ export class MissKeepApp extends React.Component {
         keepService.addNote(this.state.newNote)
         this.loadNote()
         this.setState({ newNote: keepService.getEmptyNote() })
-        this.setState({ opacity: [1, 0.3, 0.3, 0.3] })
+        this.setState({style: {...this.state.style, opacity: [1, 0.3, 0.3, 0.3] }})
     }
 
     addTodo = (note) => {

@@ -18,7 +18,7 @@ export class NoteTxt extends React.Component {
                     <div data-noteid={this.props.note.id} className="editable-content"
                         contentEditable={true} suppressContentEditableWarning={true}
                         onBlur={(ev) => this.props.onBlurContent(ev, this.props.note.type, this.props.note.id)}>
-                        {this.props.note.info.txt}</div>
+                        {this.props.note.info.txt || 'Enter Text..'}</div>
                 </section>
                 <section className="note-btns flex space-between">
                     <img src="../../assets/img/font-icon.png" alt="" />

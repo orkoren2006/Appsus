@@ -8,7 +8,13 @@ export class BookDetails extends React.Component {
 
     state = {
         book: null,
-        review: bookService.getBlankReview()
+        review: bookService.getBlankReview(),
+        addReviewVis: {
+            // status: 'visible',
+            status: '',
+            changeBy: ''
+        }
+
     }
 
     componentDidMount() {
@@ -16,9 +22,18 @@ export class BookDetails extends React.Component {
         bookService.query()
             .then(books => bookService.getBookById(books, bookId)
                 .then(book => this.setState({ book })))
+        if (window.innerWidth < 800) this.setState({ addReviewVis: { ...this.addReviewVis, status: 'hidden', changeBy: 'screen' } })
+        window.addEventListener('resize', this.updateMediaQueries);
+    }
 
-        // bookService.getBookById(bookId)
-        //     .then(book => this.setState({ book }))
+    updateMediaQueries = () => {
+        const windowWidth = window.innerWidth;
+        console.log(this.state.addReviewVis);
+        if (windowWidth < 800 && this.state.addReviewVis.changeBy !== 'btn') {
+            this.setState({ addReviewVis: { ...this.addReviewVis, status: 'none', changeBy: 'screen' } })
+        } else if (windowWidth > 800) {
+            this.setState({ addReviewVis: { ...this.addReviewVis, status: '', changeBy: 'screen' } })
+        }
     }
 
     pageCountMsg = () => {
@@ -72,6 +87,12 @@ export class BookDetails extends React.Component {
         this.setState({ review: { ...this.state.review, [field]: val } })
     }
 
+    onAddReviewHeader = () => {
+        const toggleVisibility = (this.state.addReviewVis.status === 'none') ? '' : 'none';
+        console.log(toggleVisibility);
+        this.setState({ addReviewVis: { ...this.addReviewVis, status: toggleVisibility, changeBy: 'byn' } })
+    }
+
     render() {
         const { book } = this.state
         if (!book) return <div>Loading....boooooookkk</div>
@@ -99,20 +120,23 @@ export class BookDetails extends React.Component {
                         {bookDescriptionLen < 100 && <p>{book.description}</p>}
                     </div>
                     <section className="book-review flex-col">
-                        <h3 className="flex center-content">Add Review</h3>
-                        <ReviewAdd onAddReview={this.addReview} onInputChange={this.updateReview} review={this.state.review} />
-                        <Link to="/book/gallery"><button className="back-to-gallery-btn" onClick={this.onBackToGallery}>Back To Gallery</button></Link>
+                        <h3 onClick={this.onAddReviewHeader} className="add-review-header flex center-content">Add Review</h3>
+                        {<ReviewAdd onAddReview={this.addReview} onInputChange={this.updateReview}
+                            showAddReview={this.state.addReviewVis.status} review={this.state.review} />}
+                        <Link to="/book/gallery"><button className="back-to-gallery-btn"
+                            onClick={this.onBackToGallery}>Back To Gallery
+                         </button></Link>
                     </section>
                 </section>
-                 {(book.review) && <section className="reviews-list container">
-                    <h3>Readers Reviews</h3>
+                {(book.review) && <section className="reviews-list container">
+                    <h3 onClick={this.onAddReview}>Readers Reviews</h3>
                     {book.review.map(review => {
                         return (
                             <section className="review flex">
                                 <span className="review-writer">Name: {review.name}</span>
                                 <span className="review-date">Date: {review['read-date']}</span>
                                 <span className="review-rate">Rate: {review.rate}</span>
-                                <span className="review-content">{review['free-text']}</span>
+                                <span className="review-content">{`'${review['free-text']}'`}</span>
                             </section>
                         )
                     })}
