@@ -17,7 +17,7 @@ export class NoteTodos extends React.Component {
     }
 
     render() {
-        const editBtnImg = (this.state.isEditable) ? 'check':'edit-button'
+        const editBtnImg = (this.state.isEditable) ? 'check' : 'edit-button'
         return (
             <section className="todos-note" style={this.state.style}>
                 <section className="todo-title flex space-between">
@@ -29,14 +29,25 @@ export class NoteTodos extends React.Component {
                 </section>
                 {this.props.note.info.todos.map((todo, idx) => {
                     return (
-                        <section className="todo-txt flex space-between align-center" key={todo.id}>
-                            <li className={this.getClass(this.props.note.info.todos[idx])}
-                                onClick={() => { this.props.onMarkTodo(this.props.note.info.todos, this.props.note.info.todos[idx].id) }}>
-                                {todo.txt}</li>
+                        <div className="all-todos flex space-between align-center" key={todo.id}>
+                            <section className="todo-txt"
+                                data-noteid={this.props.note.id} data-todoid={todo.id}
+                                contentEditable={this.state.isEditable} suppressContentEditableWarning={true}
+                                onBlur={(ev) => this.props.onBlurContent(ev, this.props.note.type, this.props.note.id, todo.id)}>
+                                <li className={this.getClass(this.props.note.info.todos[idx])}
+                                    onClick={() => {
+                                        if (!this.state.isEditable) {
+                                            this.props.onMarkTodo(this.props.note.info.todos, this.props.note.info.todos[idx].id)
+                                        } else {
+                                            return;
+                                        }
+                                    }}>
+                                    {todo.txt}</li>
+                            </section>
                             <button className="remove-todo-btn"
                                 onClick={() => { this.props.onRemoveNoteBtn(this.props.note, this.props.note.info.todos[idx].id) }}>
                                 X</button>
-                        </section>
+                        </div>
                     )
                 })}
                 <section className="note-btns flex space-between">

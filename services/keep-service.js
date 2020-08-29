@@ -161,10 +161,10 @@ function setNoteColor(note, bcg) {
     notes.forEach(item => {
         if (item === note) note.style.bcg = bcg;
     })
-    storageService.saveToStorage(NOTES_KEY,notes)
+    storageService.saveToStorage(NOTES_KEY, notes)
 }
 
-function addTodo(noteToEdit,txt){
+function addTodo(noteToEdit, txt) {
 
     let newTodo = {
         txt,
@@ -178,11 +178,12 @@ function addTodo(noteToEdit,txt){
     storageService.saveToStorage(NOTES_KEY, notes)
 }
 
-function editNote(content,noteType,noteId){
-    console.log(content,noteType,noteId);
-    const noteIdx = notes.findIndex(note => {return note.id === noteId})
+function editNote(content, noteType, noteId, todoId) {
 
+    const noteIdx = notes.findIndex(note => { return note.id === noteId })
+    // debugger
     let field;
+    let todoIdx;
     switch (noteType) {
         case 'NoteTxt':
             field = 'txt';
@@ -195,10 +196,15 @@ function editNote(content,noteType,noteId){
             break;
         case 'NoteTodos':
             field = 'label';
+            todoIdx = notes[noteIdx].info.todos.findIndex(todo => todo.id === todoId)
             break;
         default: break;
     }
-
-    notes[noteIdx].info[field] = content;
-    storageService.saveToStorage(NOTES_KEY,notes)
+    
+    if (todoId) {
+        notes[noteIdx].info.todos[todoIdx].txt = content;
+    } else {
+        notes[noteIdx].info[field] = content;
+    }
+    storageService.saveToStorage(NOTES_KEY, notes)
 }

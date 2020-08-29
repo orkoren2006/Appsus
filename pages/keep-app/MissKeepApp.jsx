@@ -133,11 +133,9 @@ export class MissKeepApp extends React.Component {
         this.loadNote()
     }
 
-    blurContent = (ev,noteType,noteId) => {
-        // send to db
+    blurContent = (ev,noteType,noteId,todoId) => {
         const newContent = ev.target.innerText;
-        // const noteId = ev.target.dataset.noteid;
-        keepService.editNote(newContent,noteType,noteId);
+        keepService.editNote(newContent,noteType,noteId,todoId);
         this.loadNote()
     }
 
