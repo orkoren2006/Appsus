@@ -1,7 +1,3 @@
-// TODO - some nice home page
-// TODO - BIG LOGO IN THE MIDDLE + 
-// TODO - list of apps icons + links to apps
-
 export class Home extends React.Component {
 
     navigateTo = (ev) => {
