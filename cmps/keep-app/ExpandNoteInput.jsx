@@ -11,8 +11,6 @@ export function ExpandNoteInput(props) {
                 name='second-input' type="text"
                 placeholder={getPlaceholerTxt(props.noteType)}
                 onChange={(ev) => props.onInputChange(ev)} />
-            {(props.noteType === 'NoteTodos') &&
-                <button name="add-todo-btn" className="onAddTodo" onClick={(ev) => { props.onAddTodo(ev) }}>Add Todo</button>}
         </section>
     )
 }

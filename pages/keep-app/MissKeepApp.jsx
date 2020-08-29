@@ -61,19 +61,16 @@ export class MissKeepApp extends React.Component {
     }
 
     addNote = () => {
-        if (this.state.newNote.id) {
-            this.setState({ newNote: keepService.getEmptyNote() })
-        } else {
-            keepService.addNote(this.state.newNote)
-            this.loadNote()
-            this.setState({ newNote: keepService.getEmptyNote() })
-        }
+        keepService.addNote(this.state.newNote)
+        this.loadNote()
+        this.setState({ newNote: keepService.getEmptyNote() })
+        this.setState({ opacity: [1, 0.3, 0.3, 0.3] })
     }
 
     addTodo = (note) => {
-        const noteToEdit = (note.id) ? note:this.state.newNote;
-        const content = (note.id) ? 'Edit Me :)..':this.state.newNote.moreContent
-        
+        const noteToEdit = (note.id) ? note : this.state.newNote;
+        const content = (note.id) ? 'Edit Me :)..' : this.state.newNote.moreContent
+
         if (!noteToEdit.id) {
             let note = keepService.addNote(note);
             this.loadNote()
@@ -81,17 +78,7 @@ export class MissKeepApp extends React.Component {
         } else {
             keepService.addTodo(noteToEdit, content)
             this.loadNote()
-        } 
-        // if (!this.state.newNote.id) {
-        //     let note = keepService.addNote(this.state.newNote);
-        //     this.loadNote()
-        //     this.setState({ newNote: note })
-        // } else if (this.state.newNote.id){
-        //     const note = (note.id) ? note:this.state.newNote;
-        //     const content = (note.id) ? 'Enter Todo':this.state.newNote.moreContent
-        //     keepService.addTodo(this.state.newNote, this.state.newNote.moreContent)
-        //     this.loadNote()
-        // } 
+        }
 
     }
 
@@ -133,9 +120,9 @@ export class MissKeepApp extends React.Component {
         this.loadNote()
     }
 
-    blurContent = (ev,noteType,noteId,todoId) => {
+    blurContent = (ev, noteType, noteId, todoId) => {
         const newContent = ev.target.innerText;
-        keepService.editNote(newContent,noteType,noteId,todoId);
+        keepService.editNote(newContent, noteType, noteId, todoId);
         this.loadNote()
     }
 
@@ -145,7 +132,7 @@ export class MissKeepApp extends React.Component {
 
         if (!notesToShow) return <p>loading..</p>
         return (
-            <section className="notes" >       
+            <section className="notes" >
                 <h1>I'm your KEEP app</h1>
                 <section className="new-note-container container">
                     <ul className="new-note-type-list clean-list flex align-center center-content">
@@ -187,7 +174,7 @@ export class MissKeepApp extends React.Component {
                     onChangeColor={this.noteColorChanged}
                     onBlurContent={this.blurContent}
                     contentEditable={this.state.editableContent}
-                    
+
                     onMarkTodo={this.markTodo}
                     onAddTodoBtn={this.addTodo}
 
