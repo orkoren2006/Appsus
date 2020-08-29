@@ -295,10 +295,6 @@ h1{
     margin-bottom: 5px;
 }
 
-li img, p {
-    /* margin-right: 0.5rem; */
-}
-
 
 .inbox li {
     display: flex;
