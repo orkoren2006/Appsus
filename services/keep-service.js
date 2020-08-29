@@ -17,41 +17,8 @@ export const keepService = {
 
 var notes;
 
-var gNotes = [
-    {
-        id: 'p101',
-        type: "NoteText",
-        isPinned: true,
-        info: {
-            txt: "Fullstack Me Baby!"
-        },
-        style: {
-            bcg: '#FF0000'
-        }
-    },
-    {
-        id: 'p102',
-        type: "NoteText",
-        isPinned: true,
-        info: {
-            txt: "How was it"
-        },
-        style: {
-            bcg: '#FF0000'
-        }
-    },
-    {
-        id: 'p103',
-        type: "NoteText",
-        isPinned: true,
-        info: {
-            txt: "Me playing Mi!"
-        },
-        style: {
-            bcg: '#FF0000'
-        }
-    }
-];
+
+var gNotes = [{"id":"p101","type":"NoteText","isPinned":true,"info":{"txt":"Fullstack Me Baby!"},"style":{"bcg":"#FF0000"}},{"id":"p102","type":"NoteText","isPinned":true,"info":{"txt":"How wsafasfas it"},"style":{"bcg":"#8b4141"}},{"id":"p103","type":"NoteText","isPinned":true,"info":{"txt":"Me playingsdfsdf Mi!"},"style":{"bcg":"#9b5527"}},{"type":"NoteText","isPinned":true,"info":{"txt":"vev"},"style":{"bcg":"#1e00ff"},"id":"cIZAD"},{"type":"NoteImg","info":{"url":"http://coding-academy.org/books-photos/20.jpg","title":"My Book"},"style":{"bcg":"#1e9426"},"id":"5exa9"},{"type":"NoteImg","info":{"url":"http://coding-academy.org/books-photos/14.jpg","title":"Your Book","txt":" BYour BoYour BooYour Book"},"style":{"bcg":"#825026"},"id":"iwZzt"},{"type":"NoteTodos","info":{"color":"#FF0000","label":"Your Todos!","todos":[{"txt":"Did It!!","doneAt":1598695217704,"id":"MHwGz","isDone":false},{"txt":"My Todo!!","doneAt":1598695827561,"id":"3I5hz","isDone":true},{"txt":"Editting :)..","doneAt":1598703053448,"id":"dcIVG","isDone":false}]},"style":{"backgroundColor":"#FF0000"},"id":"YNzM3"},{"type":"NoteTodos","info":{"color":"#FF0000","label":"Todos","todos":[{"txt":["Or koren"],"doneAt":1598703337255,"id":"NMTQO","isDone":false}]},"style":{"backgroundColor":"#FF0000"},"id":"tyRnX"}]
 
 function query() {
     notes = storageService.loadFromStorage(NOTES_KEY);

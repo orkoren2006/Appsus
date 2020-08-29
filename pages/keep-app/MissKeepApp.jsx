@@ -72,7 +72,7 @@ export class MissKeepApp extends React.Component {
 
     addTodo = (note) => {
         const noteToEdit = (note.id) ? note:this.state.newNote;
-        const content = (note.id) ? 'Enter Todo':this.state.newNote.moreContent
+        const content = (note.id) ? 'Edit Me :)..':this.state.newNote.moreContent
         
         if (!noteToEdit.id) {
             let note = keepService.addNote(note);
