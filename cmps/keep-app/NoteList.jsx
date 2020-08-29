@@ -15,7 +15,15 @@ export function NoteList(props) {
                 return <NoteTodos {...props} />
         }
     }
+
     return (<ul className="note-list clean-list grid">
+        {/* <div className="editable-content"
+            contentEditable={props.isEditable} suppressContentEditableWarning={true}
+            onClick={(ev) => props.onFocusContent(ev)}
+            onFocus={(ev) => props.onFocusContent(ev)}
+            onInput={(ev) => props.onChangeContent(ev)}
+            onBlur={(ev) => props.onBlurContent(ev)}>
+            {props.contentEditable}</div> */}
         {props.notes.map(note => {
             const noteType = note.type;
             return <li className={noteType} onClick={(ev) => props.onItemClick(ev, note)} key={note.id}>
@@ -24,6 +32,12 @@ export function NoteList(props) {
                     onColorChange={props.onChangeColor}
                     onRemoveNoteBtn={props.onRemoveNoteBtn}
                     onTodoClick={props.onTodoClick}
+
+                    onChangeContent={props.onChangeContent}
+                    onFocusContent={props.onFocusContent}
+                    onBlurContent={props.onBlurContent}
+                    contentEditable={props.contentEditable}
+                    isEditable={props.isEditable}
                 />
             </li>
         })}

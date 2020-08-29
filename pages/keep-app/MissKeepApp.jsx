@@ -13,7 +13,8 @@ export class MissKeepApp extends React.Component {
             opacity: [1, 0.3, 0.3, 0.3]
         },
         noteToEdit: null,
-        noteTodoInPrep: null,
+        editableContent: 'my content',
+        isEditable: true
     }
 
     componentDidMount() {
@@ -123,13 +124,31 @@ export class MissKeepApp extends React.Component {
         this.setState({ noteToEdit: null })
     }
 
+    focusContent = (ev) => {
+        console.log('focus',ev.type);
+        // this.setState({editableContent: 'itay'})
+        this.setState({isEditable: true})
+    }
+
+    blurContent = () => {
+        console.log('blur');
+        this.setState({isEditable: false})
+    }
+
+    contentEditableChange = (ev) => {
+        console.log(ev.target.value);
+        this.setState({ editableContent: { ...this.state.editableContent, editableContent: ev.target.value } })
+    }
+
 
     render() {
         const notesToShow = this.getNotesForDisplay();
+
         if (!notesToShow) return <p>loading..</p>
         return (
             <section className="notes" >
-                <h1>I'm your KEEP app</h1>
+                
+                {/* <h1>I'm your KEEP app</h1> */}
                 <section className="new-note-container container">
                     <ul className="new-note-type-list clean-list flex align-center center-content">
                         <input className="new-note-input" type="text"
@@ -169,6 +188,12 @@ export class MissKeepApp extends React.Component {
                     onItemClick={this.listItemClicked}
                     onChangeColor={this.noteColorChanged}
                     onTodoClick={this.todoClicked}
+
+                    onChangeContent={this.contentEditableChange}
+                    onFocusContent={this.focusContent}
+                    onBlurContent={this.blurContent}
+                    contentEditable={this.state.editableContent}
+                    isEditable={this.state.isEditable}
                 />
                 {/* {this.state.noteToEdit && <Modal onCloseModal={this.closeModal}>
                     <NoteEdit notes={this.state.noteToEdit} />
