@@ -54,6 +54,8 @@
 .book-price{
     padding: 10px;
     border-radius: 10px;
+    width: 50%;
+    margin: 5px auto 20px;
 }
 
 .book-info{
@@ -66,6 +68,16 @@
 
 .book-review *:not(:last-child) {
     margin-block-end: 10px;
+}
+
+.review > span:not(:last-child){
+    margin-inline-end: 10px;
+    padding-inline-end: 20px;
+    border-right: #ddd solid 1px;
+}
+
+.review > span:last-child{
+    margin-inline-start: 25px;
 }
 
 

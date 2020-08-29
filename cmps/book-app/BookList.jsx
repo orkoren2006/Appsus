@@ -15,8 +15,7 @@ export function BookList(props) {
                 break;
         }
     }
-
-    // return (<ul className={`book-list clean-list ${(props.listToRender === 'bookList') ? 'grid':'flex-col'}`}>
+    
     return (<ul className={`book-list${(props.listToRender === 'bookList') ? '':'-google-list'} clean-list align-center grid`}>
         {props.books.map(book => {
             return <Link className="book-link" key={book.id} to={`/book/gallery/${book.id}`}>

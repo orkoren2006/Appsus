@@ -51,7 +51,7 @@ export class BookDetails extends React.Component {
 
     getClass = () => {
         const bookPrice = this.state.book.listPrice.amount;
-        let bookClass = "book-price";
+        let bookClass = "book-price flex center-content";
         if (bookPrice > 150) { bookClass += ' expensive' }
         else if (bookPrice < 40) { bookClass += ' cheap' } // in the instruction should be 20 but only one book fullfills it.
 
@@ -83,7 +83,7 @@ export class BookDetails extends React.Component {
         return (
             <section className="all-details">
                 <section className="book-details-container flex">
-                    <div className="image">
+                    <div className="image flex center-content align-center">
                         <img src={book.thumbnail} alt="" />
                     </div>
                     <div className="book-info flex-col">
@@ -105,10 +105,10 @@ export class BookDetails extends React.Component {
                     </section>
                 </section>
                 <section className="reviews-list container">
+                    <h3>Readers Reviews</h3>
                     {book.review.map(review => {
                         return (
-                            <section className="reivew flex">
-                                {/* {name: "itay avrahami", rate: "3", read-date: "2020-06-09", free-text: "cool"} */}
+                            <section className="review flex">
                                 <span className="review-writer">Name: {review.name}</span>
                                 <span className="review-date">Date: {review['read-date']}</span>
                                 <span className="review-rate">Rate: {review.rate}</span>

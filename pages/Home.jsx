@@ -14,7 +14,7 @@ export class Home extends React.Component {
                 
                     <div className="apps-home">
                     <button className="app-btn effect04" name="email" onClick={this.navigateTo}> Check<br></br> mail </button>
-                    <button className="app-btn effect05" name="book" onClick={this.navigateTo}> Search books </button>
+                    <button className="app-btn effect05" name="book/gallery" onClick={this.navigateTo}> Search books </button>
                     <button className="app-btn effect06" name="keep" onClick={this.navigateTo}> Write a <br></br> note </button>
                 </div>
                 </div>
