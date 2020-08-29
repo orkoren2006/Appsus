@@ -111,8 +111,9 @@ export class MissKeepApp extends React.Component {
     }
 
     listItemClicked = (ev, note) => {
-        if (ev.target.type === 'color' || ev.target.name === 'btn') return
-        this.setState({ noteToEdit: [note] })
+        console.log(ev.target);
+        // if (ev.target.type === 'color' || ev.target.name === 'btn') return
+        // this.setState({ noteToEdit: [note] })
     }
 
     noteColorChanged = (ev, note) => {
@@ -130,14 +131,15 @@ export class MissKeepApp extends React.Component {
         this.setState({isEditable: true})
     }
 
-    blurContent = () => {
-        console.log('blur');
+    blurContent = (content) => {
+        // send to db
+        console.log(content);
         this.setState({isEditable: false})
     }
 
     contentEditableChange = (ev) => {
-        console.log(ev.target.value);
-        this.setState({ editableContent: { ...this.state.editableContent, editableContent: ev.target.value } })
+        console.log(ev.target.innerText);
+        this.setState({ editableContent: ev.target.innerText})
     }
 
 
