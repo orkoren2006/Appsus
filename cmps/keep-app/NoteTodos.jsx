@@ -25,7 +25,7 @@ export class NoteTodos extends React.Component {
                         contentEditable={true} suppressContentEditableWarning={true}
                         onBlur={(ev) => this.props.onBlurContent(ev, this.props.note.type, this.props.note.id)}>
                         {this.props.note.info.label}</div>
-                    <button className="edit-note-btn" onClick={this.onEditNote}><img src={`../../assets/img/${editBtnImg}.png`} alt="" /></button>
+                    <button className="edit-note-btn" onClick={this.onEditNote}><img src={`assets/img/${editBtnImg}.png`} alt="" /></button>
                 </section>
                 {this.props.note.info.todos.map((todo, idx) => {
                     return (
@@ -53,7 +53,7 @@ export class NoteTodos extends React.Component {
                 <section className="note-btns flex space-between">
                     <button className="add-todo-btn" onClick={() => { this.props.onAddTodoBtn(this.props.note) }}>+</button>
                     <button className="remove-btn-todo" onClick={() => { this.props.onRemoveNoteBtn(this.props.note) }}>
-                        <img src="../../assets/img/delete-white.png" alt="" />
+                        <img src="assets/img/delete-white.png" alt="" />
                     </button>
                 </section>
             </section>

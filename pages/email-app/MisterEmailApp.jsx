@@ -141,7 +141,7 @@ export class MisterEmailApp extends React.Component {
                 <div className="screen">
                     <div className="sidebar">
                         <div className="compose-btn"> 
-                        <img  src="../../assets/img/plus_icon.png"/>    
+                        <img  src="assets/img/plus_icon.png"/>    
                         <button className="compose" onClick={this.openCompose}>Compose</button>
                         </div>
                         <EmailFilter onReadFilter={this.toggleReadFilter} onSentFilter={this.toggleSentFilter} onStarredFilter={this.toggleStarredFilter}

@@ -9,7 +9,7 @@ export class Home extends React.Component {
             <section>
                 {/* <h2>Appsus Sweet Appsus</h2> */}
                 <div className="start">
-                    <img className="gif-home" src="../assets/img/hello_gif.gif" />
+                    <img className="gif-home" src="assets/img/hello_gif.gif" />
                     <h2 className="what"> What do you want to do today?</h2>
                 
                     <div className="apps-home">

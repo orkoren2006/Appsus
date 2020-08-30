@@ -224,7 +224,7 @@ h3{
 
 .compose-btn{
     display: flex;
-    
+    width: 150px;
     justify-content: center;
     margin-bottom: 1rem;
     border-radius: 2rem;
@@ -305,7 +305,7 @@ h3{
 
 .send-email {
     color: white;
-    
+
 }
 
 

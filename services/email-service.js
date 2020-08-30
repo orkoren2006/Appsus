@@ -39,8 +39,8 @@ function query() { //// NEED TO CHECK TOMORROW - WHEN USING IT, NEW EMAILS AREN'
 
 function addEmail(subject, body) {
     let id = utilService.makeId()
-    let email = {id: id, subject: subject, body: body, sender: 'Me', isRead: false, isSent: true, isStarred: false, sentAt : new Date()}
-    emails.push(email)
+    let email = {id: id, subject: subject, body: body, sender: 'Me', isRead: false, isSent: true, isStarred: false, sentAt : new Date().toLocaleDateString("he-IL")}
+    emails.unshift(email)
     storageService.saveToStorage(KEY, emails)
 }
 

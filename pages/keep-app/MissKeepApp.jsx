@@ -144,19 +144,19 @@ export class MissKeepApp extends React.Component {
                             <li className="txt-note" >
                                 <img data-type="NoteTxt" onClick={this.onNoteType}
                                     style={{ opacity: this.state.style.opacity[0] }}
-                                    src="../../assets/img/font-icon.png" alt="" /></li>
+                                    src="assets/img/font-icon.png" alt="" /></li>
                             <li className="img-note-btn" >
                                 <img data-type="NoteImg" onClick={this.onNoteType}
                                     style={{ opacity: this.state.style.opacity[1] }}
-                                    src="../../assets/img/picture-icon.png" alt="" /></li>
+                                    src="assets/img/picture-icon.png" alt="" /></li>
                             <li className="video-note">
                                 <img data-type="NoteVideo" onClick={this.onNoteType}
                                     style={{ opacity: this.state.style.opacity[2] }}
-                                    src="../../assets/img/youtube-icon.png" alt="" /></li>
+                                    src="assets/img/youtube-icon.png" alt="" /></li>
                             <li className="todo-note" >
                                 <img data-type="NoteTodos" onClick={this.onNoteType}
                                     style={{ opacity: this.state.style.opacity[3] }}
-                                    src="../../assets/img/todo-icon.png" alt="" /></li>
+                                    src="assets/img/todo-icon.png" alt="" /></li>
                             <button className="add-note" onClick={this.addNote}>Add Note</button>
                         </section>
                     </ul>
