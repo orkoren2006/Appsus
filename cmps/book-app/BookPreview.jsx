@@ -9,7 +9,7 @@ export function BookPreview({ book }) {
         <article className="book-preview">
             <img className="book-img" src={book.thumbnail} alt="" />
             <section className="book-text flex-col">
-                <h3>{book.title}</h3>
+                <h3 style={{color: 'black'}}>{book.title}</h3>
                 <h4>Price: {priceToDisplay}</h4>
             </section>
         </article>
