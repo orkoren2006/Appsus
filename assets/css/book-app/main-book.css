@@ -66,10 +66,15 @@
     margin: 10px auto;
     padding: 20px;
     border-radius: 10px;
+    color: black;
 }
 
 .review-form{
     flex: 1;
+}
+
+.readers-review-header{
+    color: black;
 }
 
 .book-review *:not(:last-child) {

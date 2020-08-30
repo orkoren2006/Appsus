@@ -128,9 +128,9 @@ export class BookDetails extends React.Component {
                          </button></Link>
                     </section>
                 </section>
-                {(book.review) && <section className="reviews-list container">
-                    <h3 onClick={this.onAddReview}>Readers Reviews</h3>
-                    {book.review.map(review => {
+                {<section className="reviews-list container">
+                    <h3 onClick={this.onAddReview} className="readers-review-header">Readers Reviews</h3>
+                    {(book.review) && book.review.map(review => {
                         return (
                             <section className="review flex">
                                 <span className="review-writer">Name: {review.name}</span>
